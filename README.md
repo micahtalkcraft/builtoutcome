@@ -25,6 +25,5 @@ workflow in `.github/workflows/deploy.yml` on every push to `main`.
 
 ## Notes
 
-- Site source uses root-absolute links; the deploy workflow rewrites them for
-  the GitHub Pages subpath. When moving to a custom domain, delete that
-  rewrite step and update `SITE_URL` in `astro.config.mjs`.
+- Live at https://builtoutcomes.com (GitHub Pages custom domain — `public/CNAME`
+  plus `SITE_URL` in `astro.config.mjs`).

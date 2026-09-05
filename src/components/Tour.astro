@@ -1,0 +1,884 @@
+---
+const tours = [
+  {
+    title: 'Discovery sprint',
+    desc: 'One to two weeks mapping your workflows and systems, finding the friction, and agreeing the outcome metric before anything gets built.',
+  },
+  {
+    title: 'AI automation',
+    desc: "AI wired into the tools you already use to take over the routine work — intake, triage, data entry, follow-ups — not another app for your team to learn.",
+  },
+  {
+    title: 'System integration',
+    desc: "CRM, billing, ops, and support connected into one stack that talks to itself. Data entered once shows up everywhere it's needed.",
+  },
+  {
+    title: 'Outcome dashboard',
+    desc: 'The metric we agreed — revenue, hours saved, response time, conversion — tracked live on a dashboard we both watch throughout the engagement.',
+  },
+  {
+    title: 'Incremental delivery',
+    desc: 'Work ships in small increments, every few weeks. You see real progress early and can steer, instead of waiting months for a big reveal.',
+  },
+  {
+    title: 'Report & handover',
+    desc: 'A plain-English report on what changed and by how much, full documentation, team training, and an optional ongoing support plan.',
+  },
+];
+---
+
+<section class="tour section" id="tour">
+  <div class="container tour__inner">
+    <!-- Row 1, col 1: title -->
+    <h2 class="tour__title">What an engagement<br />looks like</h2>
+
+    <!-- Row 1, col 2: subtext above the dashboard -->
+    <div class="tour__lead">
+      <p>
+        From the first discovery call to the final outcome report — here's how
+        working with Built Outcomes runs, shown on the kind of project
+        dashboard we share with every client.
+      </p>
+      <a href="#features" class="tour__overview">
+        What we do
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Row 2, col 1: accordion -->
+    <ul class="tour__list">
+      {tours.map((t, i) => (
+        <li>
+          <button class={`tour-tab${i === 0 ? ' is-active' : ''}`} data-tab={i} type="button">
+            <span class="tour-tab__dot" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </span>
+            <span class="tour-tab__body">
+              <span class="tour-tab__title">{t.title}</span>
+              <span class="tour-tab__desc">{t.desc}</span>
+            </span>
+          </button>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Row 2, col 2: framed dashboard preview -->
+    <div class="tour__frame" aria-label="Built Outcomes example client dashboard">
+        {/* Drop your HD screenshot in public/dashboard.png and replace this
+            entire .dash block with: <img src="/dashboard.png" alt="..." /> */}
+        <div class="dash">
+          <header class="dash__topbar">
+            <div class="dash__brand">
+              <img src="/logo.webp" alt="" width="20" height="20" />
+              <span>Built Outcomes</span>
+            </div>
+            <div class="dash__search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <span>Search projects, metrics, systems…</span>
+              <kbd>⌘K</kbd>
+            </div>
+            <div class="dash__user">
+              <span class="dash__user-pill">Client</span>
+              <span class="dash__avatar">JM</span>
+            </div>
+          </header>
+
+          <div class="dash__body">
+            <aside class="dash__sidebar">
+              <a class="is-active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92Z"/></svg>
+                Projects
+              </a>
+              <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>Outcomes</a>
+              <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21a7 7 0 0 1 14 0"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M22 21a4 4 0 0 0-3-3.87"/></svg>Team</a>
+              <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/></svg>Metrics</a>
+              <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/></svg>Integrations</a>
+              <a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Settings</a>
+            </aside>
+
+            <main class="dash__main">
+              <div class="dash__views">
+
+              <!-- View 0 · Discovery sprint -->
+              <section class="dash__view is-active" data-view="0">
+                <div class="dash__main-head">
+                  <div>
+                    <h4>Discovery sprint</h4>
+                    <span>Week 1 of 2 · mapping workflows</span>
+                  </div>
+                  <div class="dash__filter"><span>Acme Logistics</span></div>
+                </div>
+                <div class="dv-grid">
+                  <div class="dv-card">
+                    <div class="dv-card__title">Workflow map</div>
+                    <div class="dv-row"><span class="dv-check">✓</span><span>Lead intake</span><span class="dcard__pill dcard__pill--won">Mapped</span></div>
+                    <div class="dv-row"><span class="dv-check">✓</span><span>Invoicing &amp; billing</span><span class="dcard__pill dcard__pill--won">Mapped</span></div>
+                    <div class="dv-row"><span class="dv-check dv-check--pend">…</span><span>Support triage</span><span class="dcard__pill dcard__pill--new">In progress</span></div>
+                  </div>
+                  <div class="dv-card">
+                    <div class="dv-card__title">Outcome metric</div>
+                    <div class="dv-big">Hours saved / week</div>
+                    <div class="dv-note">Baseline 0 → target <strong>12 hrs</strong></div>
+                    <span class="dcard__pill dcard__pill--new">Agreed with client</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- View 1 · AI automation -->
+              <section class="dash__view" data-view="1">
+                <div class="dash__main-head">
+                  <div>
+                    <h4>AI automations</h4>
+                    <span>3 live · running in your existing tools</span>
+                  </div>
+                  <div class="dash__filter"><span>This week</span></div>
+                </div>
+                <div class="dv-card">
+                  <div class="dv-pipe">
+                    <span class="dv-pipe__node">Intake</span>
+                    <span class="dv-pipe__arrow">→</span>
+                    <span class="dv-pipe__node lit">AI triage</span>
+                    <span class="dv-pipe__arrow">→</span>
+                    <span class="dv-pipe__node">CRM</span>
+                  </div>
+                  <div class="dv-row"><span class="dv-check">✓</span><span>Invoice processing</span><span class="dcard__pill dcard__pill--won">Automated</span></div>
+                  <div class="dv-row"><span class="dv-check">✓</span><span>Customer replies drafted</span><span class="dcard__pill dcard__pill--won">Automated</span></div>
+                  <div class="dv-row"><span class="dv-check">✓</span><span>Weekly reporting</span><span class="dcard__pill dcard__pill--won">Automated</span></div>
+                  <div class="dv-note"><strong>14 hrs</strong> saved this week</div>
+                </div>
+              </section>
+
+              <!-- View 2 · System integration -->
+              <section class="dash__view" data-view="2">
+                <div class="dash__main-head">
+                  <div>
+                    <h4>Connected systems</h4>
+                    <span>Synced 2 minutes ago</span>
+                  </div>
+                  <div class="dash__filter"><span>All systems</span></div>
+                </div>
+                <div class="dv-card">
+                  <div class="dv-row"><span class="dv-check">✓</span><span>CRM ↔ Billing</span><span class="dcard__pill dcard__pill--won">Connected</span></div>
+                  <div class="dv-row"><span class="dv-check">✓</span><span>Support ↔ Product data</span><span class="dcard__pill dcard__pill--won">Connected</span></div>
+                  <div class="dv-row"><span class="dv-check">✓</span><span>Ops ↔ AI assistant</span><span class="dcard__pill dcard__pill--won">Live</span></div>
+                  <div class="dv-row"><span class="dv-check dv-check--pend">…</span><span>Accounting ↔ Reporting</span><span class="dcard__pill dcard__pill--new">In build</span></div>
+                  <div class="dv-note">Data entered once shows up everywhere it's needed.</div>
+                </div>
+              </section>
+
+              <!-- View 3 · Outcome dashboard -->
+              <section class="dash__view" data-view="3">
+                <div class="dash__main-head">
+                  <div>
+                    <h4>Outcome tracker</h4>
+                    <span>Throughput gain · vs 25% target</span>
+                  </div>
+                  <div class="dash__filter"><span>Q3 review</span></div>
+                </div>
+                <div class="dv-grid">
+                  <div class="dv-card">
+                    <div class="dv-card__title">Agreed metric</div>
+                    <div class="dv-metric">+38%</div>
+                    <div class="dv-note">Target beaten in week 9</div>
+                    <span class="dcard__chip dcard__chip--good">On track</span>
+                  </div>
+                  <div class="dv-card">
+                    <div class="dv-card__title">Month by month</div>
+                    <div class="dv-bars" aria-hidden="true">
+                      <span style="height: 30%"></span>
+                      <span style="height: 46%"></span>
+                      <span style="height: 58%"></span>
+                      <span style="height: 74%"></span>
+                      <span class="lit" style="height: 95%"></span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- View 4 · Incremental delivery -->
+              <section class="dash__view" data-view="4">
+              <div class="dash__main-head">
+                <div>
+                  <h4>This quarter's workstreams</h4>
+                  <span>12 automations · 3 in build · 2 measuring</span>
+                </div>
+                <div class="dash__filter">
+                  <span>All projects</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+              </div>
+
+              <div class="dash__board">
+                <div class="dash__col">
+                  <div class="dash__col-head"><span>Discovery</span><span class="dash__count">3</span></div>
+                  <article class="dcard">
+                    <strong>Acme Logistics · Intake AI</strong>
+                    <span>Discovery · week 1</span>
+                    <span class="dcard__pill dcard__pill--new">Mapping workflows</span>
+                  </article>
+                  <article class="dcard">
+                    <strong>Harbor &amp; Co · Billing sync</strong>
+                    <span>Discovery · week 2</span>
+                    <span class="dcard__pill dcard__pill--new">Agreeing metric</span>
+                  </article>
+                </div>
+
+                <div class="dash__col">
+                  <div class="dash__col-head"><span>In build</span><span class="dash__count">8</span></div>
+                  <article class="dcard">
+                    <strong>Northwind Retail · Support triage</strong>
+                    <span>Increment 3 of 5</span>
+                    <div class="dcard__score">
+                      <span class="dcard__chip dcard__chip--good">On track</span>
+                      <span>Demo Friday</span>
+                    </div>
+                  </article>
+                  <article class="dcard">
+                    <strong>Vortex · CRM integration</strong>
+                    <span>Increment 2 of 4</span>
+                    <div class="dcard__score">
+                      <span class="dcard__chip dcard__chip--ok">Waiting</span>
+                      <span>API access pending</span>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="dash__col">
+                  <div class="dash__col-head"><span>Measuring</span><span class="dash__count">14</span></div>
+                  <article class="dcard">
+                    <strong>Streamline · Order routing</strong>
+                    <span>Measurement · week 2</span>
+                    <div class="dcard__score">
+                      <span class="dcard__chip dcard__chip--good">+38%</span>
+                      <span>vs 25% target</span>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="dash__col">
+                  <div class="dash__col-head"><span>Shipped</span><span class="dash__count">9</span></div>
+                  <article class="dcard">
+                    <strong>Quanta Health · Intake AI</strong>
+                    <span>15 hrs saved / week</span>
+                    <span class="dcard__pill dcard__pill--won">Outcome hit</span>
+                  </article>
+                </div>
+              </div>
+              </section>
+
+              <!-- View 5 · Report & handover -->
+              <section class="dash__view" data-view="5">
+                <div class="dash__main-head">
+                  <div>
+                    <h4>Engagement report</h4>
+                    <span>Quanta Health · Intake AI</span>
+                  </div>
+                  <div class="dash__filter"><span>Final review</span></div>
+                </div>
+                <div class="dv-grid">
+                  <div class="dv-card">
+                    <div class="dv-card__title">Result</div>
+                    <div class="dv-metric">15 hrs</div>
+                    <div class="dv-note">saved per week · <strong>outcome hit</strong></div>
+                    <span class="dcard__pill dcard__pill--won">Target beaten</span>
+                  </div>
+                  <div class="dv-card">
+                    <div class="dv-card__title">Handover</div>
+                    <div class="dv-row"><span class="dv-check">✓</span><span>Plain-English report</span></div>
+                    <div class="dv-row"><span class="dv-check">✓</span><span>Full documentation</span></div>
+                    <div class="dv-row"><span class="dv-check">✓</span><span>Team trained</span></div>
+                    <div class="dv-row"><span class="dv-check dv-check--pend">+</span><span>Optional support plan</span></div>
+                  </div>
+                </div>
+              </section>
+
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<style>
+  .tour {
+    background: var(--color-surface);
+  }
+
+  .tour__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    column-gap: clamp(1.5rem, 4vw, 3rem);
+    row-gap: clamp(1.25rem, 2.5vw, 1.75rem);
+    align-items: start;
+  }
+
+  @media (max-width: 1000px) {
+    .tour__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tour__title {
+    font-size: clamp(1.875rem, 3.6vw, 3rem);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    font-weight: 800;
+  }
+
+  .tour__lead p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+    max-width: 580px;
+    margin-bottom: 0.85rem;
+  }
+
+  .tour__overview {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-accent);
+  }
+
+  .tour__overview svg { transition: transform 0.15s ease; }
+  .tour__overview:hover svg { transform: translateX(3px); }
+
+  /* Accordion */
+  .tour__list { list-style: none; margin: 0; padding: 0; }
+
+  .tour__list li { border-top: 1px solid var(--color-border); }
+  .tour__list li:last-child { border-bottom: 1px solid var(--color-border); }
+
+  .tour-tab {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    color: var(--color-fg);
+  }
+
+  .tour-tab__dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-subtle);
+    margin-top: 2px;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  .tour-tab.is-active .tour-tab__dot {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    transform: rotate(90deg);
+  }
+
+  .tour-tab__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+  }
+
+  .tour-tab__title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    transition: color 0.15s ease;
+  }
+
+  .tour-tab.is-active .tour-tab__title { color: var(--color-accent); }
+  .tour-tab:hover:not(.is-active) .tour-tab__title { color: var(--color-accent); }
+
+  .tour-tab__desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+    display: none;
+  }
+
+  .tour-tab.is-active .tour-tab__desc { display: block; }
+
+  /* Active progress underline */
+  .tour-tab.is-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 60%;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  /* Frame around the dashboard mockup */
+  .tour__frame {
+    background: #eef4fc;
+    border-radius: 24px;
+    padding: clamp(0.85rem, 1.6vw, 1.25rem);
+  }
+
+  /* ──────────── Dashboard mockup ──────────── */
+  .dash {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 0.8125rem;
+  }
+
+  .dash__topbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .dash__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 800;
+    font-size: 0.875rem;
+    color: var(--color-fg);
+  }
+
+  .dash__brand img { display: block; }
+
+  .dash__search {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-surface);
+    border-radius: 8px;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    max-width: 320px;
+  }
+
+  .dash__search svg { color: var(--color-subtle); }
+
+  .dash__search kbd {
+    margin-left: auto;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: inherit;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+  }
+
+  .dash__user {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dash__user-pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    padding: 3px 7px;
+    border-radius: 999px;
+  }
+
+  .dash__avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: #fbbf24;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .dash__body {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+  }
+
+  .dash__sidebar {
+    border-right: 1px solid var(--color-border);
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .dash__sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    color: var(--color-muted);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .dash__sidebar a.is-active {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .dash__main {
+    padding: 0.9rem 1rem 1rem;
+    background: #fafbfd;
+  }
+
+  .dash__main-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.85rem;
+    gap: 1rem;
+  }
+
+  .dash__main-head h4 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .dash__main-head > div > span {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+
+  .dash__filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.55rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.72rem;
+    color: var(--color-muted);
+    flex-shrink: 0;
+  }
+
+  .dash__board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.55rem;
+    align-items: flex-start;
+  }
+
+  .dash__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .dash__col-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .dash__count {
+    background: var(--color-surface);
+    color: var(--color-muted);
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 999px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 600;
+  }
+
+  .dcard {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.55rem 0.65rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .dcard strong {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    line-height: 1.3;
+  }
+
+  .dcard > span {
+    font-size: 0.65rem;
+    color: var(--color-muted);
+  }
+
+  .dcard__score {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+  }
+
+  .dcard__score span:not(.dcard__chip) {
+    font-size: 0.62rem;
+    color: var(--color-muted);
+  }
+
+  .dcard__chip {
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    color: #fff;
+  }
+
+  .dcard__chip--good { background: var(--color-success); }
+  .dcard__chip--ok { background: var(--color-warning); }
+
+  .dcard__pill {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 999px;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  .dcard__pill--new {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  .dcard__pill--won {
+    background: rgba(34, 197, 94, 0.14);
+    color: var(--color-success);
+  }
+
+  /* ──────────── Rotating views ──────────── */
+  .dash__views {
+    display: grid;
+  }
+
+  .dash__view {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    pointer-events: none;
+  }
+
+  .dash__view.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dash__view {
+      transition: none;
+      transform: none;
+    }
+  }
+
+  .dv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
+    align-items: stretch;
+  }
+
+  .dv-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 0.8rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .dv-card__title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+  }
+
+  .dv-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-fg);
+    width: 100%;
+  }
+
+  .dv-row > span:nth-child(2) { flex: 1; }
+
+  .dv-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.14);
+    color: var(--color-success);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .dv-check--pend {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  .dv-big {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .dv-note {
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+
+  .dv-metric {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-fg);
+  }
+
+  .dv-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 92px;
+    width: 100%;
+  }
+
+  .dv-bars span {
+    flex: 1;
+    border-radius: 6px 6px 3px 3px;
+    background: var(--color-surface-2);
+  }
+
+  .dv-bars span.lit { background: var(--color-accent); }
+
+  .dv-pipe {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .dv-pipe__node {
+    flex: 1;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.5rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .dv-pipe__node.lit {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  .dv-pipe__arrow {
+    color: var(--color-subtle);
+    font-weight: 700;
+  }
+
+  @media (max-width: 760px) {
+    .dash__sidebar { display: none; }
+    .dash__body { grid-template-columns: 1fr; }
+    .dash__board { grid-template-columns: repeat(2, 1fr); }
+    .dash__search { display: none; }
+  }
+</style>
+
+<script>
+  // Accordion + rotating dashboard views.
+  // The active tab, its matching .dash__view, and a sidebar highlight all move
+  // together; auto-advances every 5s while the section is on screen, and a
+  // manual click restarts the clock so it doesn't jump away from the reader.
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.tour-tab'));
+  const views = Array.from(document.querySelectorAll<HTMLElement>('.dash__view'));
+  const sideLinks = Array.from(document.querySelectorAll<HTMLElement>('.dash__sidebar a'));
+  // step index → sidebar item (Projects, Outcomes, Team, Metrics, Integrations, Settings)
+  const sideMap = [0, 0, 4, 1, 0, 3];
+
+  let current = 0;
+  let timer: ReturnType<typeof setInterval> | undefined;
+
+  const activate = (i: number) => {
+    current = i;
+    tabs.forEach((t, j) => t.classList.toggle('is-active', j === i));
+    views.forEach((v, j) => v.classList.toggle('is-active', j === i));
+    sideLinks.forEach((a, j) => a.classList.toggle('is-active', j === sideMap[i]));
+  };
+
+  const startTimer = () => {
+    clearInterval(timer);
+    timer = setInterval(() => activate((current + 1) % tabs.length), 5000);
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      activate(i);
+      startTimer();
+    });
+  });
+
+  // Only rotate while the section is actually in view.
+  const section = document.querySelector('#tour');
+  if (section && tabs.length && views.length) {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) startTimer();
+        else clearInterval(timer);
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(section);
+  }
+</script>

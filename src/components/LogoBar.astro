@@ -1,0 +1,59 @@
+---
+const logos = [
+  'Northwind',
+  'Vortex',
+  'Harborline',
+  'Quanta',
+  'Helix',
+  'Prismic',
+  'Streamline',
+];
+---
+
+<section class="logobar">
+  <div class="container">
+    <p class="logobar__label">Trusted by 40+ businesses across logistics, e-commerce &amp; services</p>
+    <div class="logobar__grid">
+      {logos.map((name) => <span class="logobar__logo">{name}</span>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logobar {
+    padding-block: 3rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .logobar__label {
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-subtle);
+    margin-bottom: 1.75rem;
+  }
+
+  .logobar__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem 3rem;
+  }
+
+  .logobar__logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-subtle);
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+
+  .logobar__logo:hover {
+    opacity: 1;
+    color: var(--color-fg);
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import PageHero from '../components/PageHero.astro';
+
+const values = [
+  {
+    title: 'Outcome first, always',
+    desc: "Before we write a line of code, we agree the target metric with you — hours saved, throughput gained, revenue recovered. If we can't name the number, we don't start the project.",
+  },
+  {
+    title: 'Senior people only',
+    desc: "The people you meet on the first call are the people who do the work. No hand-offs to a junior team, no account managers relaying messages, no surprises at kickoff.",
+  },
+  {
+    title: 'Plain-English communication',
+    desc: "You get a weekly update tied to your numbers, written so anyone in the business can read it. No jargon, no status theatre, no 40-slide decks.",
+  },
+];
+---
+
+<Layout
+  title="About — Built Outcomes"
+  description="Why we started Built Outcomes — a consultancy that integrates software and AI into businesses to deliver measurable results."
+>
+  <Nav />
+  <main>
+    <PageHero
+      eyebrow="About us"
+      title="We started Built Outcomes because most tech projects end with a handover, not a result."
+      description="Founded in 2021 by engineers and strategists who were tired of watching projects ship and change nothing. We integrate software and AI into businesses — and we agree the outcome before we start."
+    />
+
+    <section class="about section">
+      <div class="container container-narrow">
+        <div class="about__values">
+          {values.map((v) => (
+            <div class="about__value">
+              <h2>{v.title}</h2>
+              <p>{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <FinalCTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .about__values {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about__value {
+    padding: 1.75rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .about__value h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-fg);
+  }
+
+  .about__value p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+</style>

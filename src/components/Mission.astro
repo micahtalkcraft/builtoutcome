@@ -1,0 +1,74 @@
+---
+---
+
+<section class="mission section" id="mission">
+  <div class="container mission__inner">
+    <h2 class="mission__title">
+      We help businesses grow<br class="mission__br" />
+      by putting software,<br class="mission__br" />
+      automation &amp; AI<br class="mission__br" />
+      <em>to work where it matters</em>
+    </h2>
+    <div class="mission__copy">
+      <p>
+        Our mission is to give small and medium-sized businesses access to the
+        kind of connected software, automation, and AI capability that's
+        typically reserved for large enterprises.
+      </p>
+      <p>
+        We integrate it into the tools you already run, point it at a growth
+        target we agree together, and measure what it delivers — so technology
+        becomes something your business profits from, not just pays for.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mission {
+    background: #fff;
+    padding-block: clamp(5.5rem, 10vw, 9rem);
+  }
+
+  .mission__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 6.5fr) minmax(0, 5.5fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .mission__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .mission__br {
+      display: none;
+    }
+  }
+
+  .mission__title {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.16;
+    text-wrap: balance;
+  }
+
+  .mission__title em {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+
+  .mission__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .mission__copy p {
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+</style>

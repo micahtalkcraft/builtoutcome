@@ -1,0 +1,50 @@
+---
+import { SEO as AstroSEO } from 'astro-seo';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const { title, description, image = '/og-default.png', noindex = false } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const imageURL = new URL(image, Astro.site).toString();
+---
+
+<AstroSEO
+  title={title}
+  description={description}
+  canonical={canonicalURL}
+  noindex={noindex}
+  openGraph={{
+    basic: {
+      title,
+      type: 'website',
+      image: imageURL,
+      url: canonicalURL,
+    },
+    optional: {
+      description,
+      siteName: 'Built Outcomes',
+    },
+  }}
+  twitter={{
+    card: 'summary_large_image',
+    title,
+    description,
+    image: imageURL,
+  }}
+  extend={{
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+    ],
+    meta: [
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'generator', content: Astro.generator },
+    ],
+  }}
+/>

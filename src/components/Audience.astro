@@ -1,0 +1,619 @@
+---
+const tabs = [
+  {
+    id: 'solo',
+    label: 'For small businesses',
+    title: 'Big-company automation, without the big-company overhead.',
+    desc: "If you're running a small business on off-the-shelf tools, you don't need a platform migration — you need the tools you already have to talk to each other and handle the routine work. We build exactly that, in plain English the whole way.",
+    quote: 'Our CRM, billing, and support tools finally talk to each other. No more copy-pasting between five tabs. The team explained everything in plain English the entire way through.',
+    name: 'James Okafor',
+    role: 'Founder · Professional services',
+    initials: 'JO',
+    color: '#a78bfa',
+    img: 20,
+  },
+  {
+    id: 'teams',
+    label: 'For growing companies',
+    title: 'One connected stack — not a pile of silos.',
+    desc: 'Growth breaks disconnected tools first. We connect CRM, billing, ops, and support into one stack that scales with you, shipped in small increments so nothing stops while we build.',
+    quote: "We'd been burned by big consultancies before. Built Outcomes agreed a target with us up front and beat it — 38% more throughput in one quarter.",
+    name: 'Laura Price',
+    role: 'COO · E-commerce brand',
+    initials: 'LP',
+    color: '#fbbf24',
+    img: 33,
+  }, /* keep — img=33 is a corporate-looking man */
+  {
+    id: 'managers',
+    label: 'For operations leaders',
+    title: 'Automate the busywork — and see the numbers move.',
+    desc: 'Get hours back for your team without adding headcount. We map your workflows, automate the routine steps with AI, and track the agreed metric on a dashboard you both watch — so the ROI conversation is easy.',
+    quote: "They automated our whole intake process with AI in six weeks. We're saving around 15 hours a week and our response times have halved.",
+    name: 'Sarah Mitchell',
+    role: 'Operations Director · Logistics firm',
+    initials: 'SM',
+    color: '#f472b6',
+    img: 60,
+  },
+];
+---
+
+<section class="audience section" id="audience">
+  <div class="container">
+    <header class="aud__header">
+      <h2>Built for <span class="text-gradient">how you work</span>.</h2>
+      <p class="aud__lead">Small business, growing company, or operations team — Built Outcomes adapts to the stack you already run.</p>
+    </header>
+
+    <div class="aud__tabs" role="tablist">
+      {tabs.map((t, i) => (
+        <button
+          type="button"
+          role="tab"
+          class={`aud__tab${i === 0 ? ' is-active' : ''}`}
+          data-tab={t.id}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={`aud-panel-${t.id}`}
+        >
+          {t.label}
+        </button>
+      ))}
+    </div>
+
+    <div class="aud__panels">
+      {tabs.map((t, i) => (
+        <div
+          id={`aud-panel-${t.id}`}
+          role="tabpanel"
+          class={`aud__panel${i === 0 ? ' is-active' : ''}`}
+          data-panel={t.id}
+        >
+          <div class="aud__copy">
+            <h3>{t.title}</h3>
+            <p>{t.desc}</p>
+
+            <figure class="aud__quote">
+              <blockquote>"{t.quote}"</blockquote>
+              <figcaption>
+                <img class="aud__avatar" src={`https://i.pravatar.cc/76?img=${t.img}`} alt="" loading="lazy" width="38" height="38" style={`background:${t.color}`} />
+                <div class="aud__person">
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </div>
+                <a href="/book-a-call" class="aud__cta">
+                  Book a call
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="aud__visual" aria-hidden="true">
+            {/* Tab-specific graphic */}
+            {t.id === 'solo' && (
+              <div class="vsolo">
+                <div class="vsolo__head">
+                  <img class="vsolo__avatar" src={`https://i.pravatar.cc/72?img=${t.img}`} alt="" loading="lazy" width="36" height="36" style={`background:${t.color}`} />
+                  <div>
+                    <strong>{t.name.split(' ')[0]}'s dashboard</strong>
+                    <span>Last 7 days · Outcome tracker</span>
+                  </div>
+                </div>
+                <div class="vsolo__stats">
+                  <div class="vsolo__stat">
+                    <span class="vsolo__label">Hrs saved</span>
+                    <strong>15</strong>
+                    <span class="vsolo__trend">↑ 4</span>
+                  </div>
+                  <div class="vsolo__stat">
+                    <span class="vsolo__label">Response</span>
+                    <strong>−48%</strong>
+                    <span class="vsolo__trend">↑ faster</span>
+                  </div>
+                  <div class="vsolo__stat">
+                    <span class="vsolo__label">Tasks auto</span>
+                    <strong>47</strong>
+                    <span class="vsolo__trend">↑ 8</span>
+                  </div>
+                </div>
+                <div class="vsolo__chart">
+                  <span class="vsolo__chart-label">Outcome trend</span>
+                  <svg viewBox="0 0 200 50" preserveAspectRatio="none">
+                    <path d="M0 42 L25 38 L50 34 L75 28 L100 22 L125 16 L150 10 L175 6 L200 4"
+                          stroke="#22c55e" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {t.id === 'teams' && (
+              <div class="vteam">
+                <div class="vteam__head">
+                  <strong>Workflow health this week</strong>
+                  <span class="vteam__pill">8 workflows</span>
+                </div>
+                <ul class="vteam__list">
+                  <li><span class="vteam__rank">1</span><img class="vteam__face" src="https://i.pravatar.cc/56?img=5" alt="" loading="lazy" /><span class="vteam__name">Lead intake</span><span class="vteam__score vteam__score--good">9.2</span></li>
+                  <li><span class="vteam__rank">2</span><img class="vteam__face" src="https://i.pravatar.cc/56?img=12" alt="" loading="lazy" /><span class="vteam__name">Invoice sync</span><span class="vteam__score vteam__score--good">8.7</span></li>
+                  <li><span class="vteam__rank">3</span><img class="vteam__face" src="https://i.pravatar.cc/56?img=14" alt="" loading="lazy" /><span class="vteam__name">Support triage</span><span class="vteam__score">8.4</span></li>
+                  <li><span class="vteam__rank">4</span><img class="vteam__face" src="https://i.pravatar.cc/56?img=60" alt="" loading="lazy" /><span class="vteam__name">Order routing</span><span class="vteam__score vteam__score--ok">7.9</span></li>
+                </ul>
+                <div class="vteam__alert">
+                  <span class="vteam__alert-dot"></span>
+                  <span><strong>3 workflows</strong> flagged for tuning — on Friday's check-in agenda</span>
+                </div>
+              </div>
+            )}
+
+            {t.id === 'managers' && (
+              <div class="vmgr">
+                <div class="vmgr__head">
+                  <strong>Automation backlog · Q4</strong>
+                  <span class="vmgr__pill">8 items</span>
+                </div>
+                <div class="vmgr__clip">
+                  <span class="vmgr__time">Wk 2</span>
+                  <span class="vmgr__title">Automate invoice matching</span>
+                  <span class="vmgr__by">Ops</span>
+                </div>
+                <div class="vmgr__clip">
+                  <span class="vmgr__time">Wk 3</span>
+                  <span class="vmgr__title">Route support tickets with AI</span>
+                  <span class="vmgr__by">Support</span>
+                </div>
+                <div class="vmgr__clip vmgr__clip--good">
+                  <span class="vmgr__time">Wk 4</span>
+                  <span class="vmgr__title">Sync CRM with billing</span>
+                  <span class="vmgr__by">Finance</span>
+                </div>
+                <div class="vmgr__assign">
+                  <span class="vmgr__assign-label">Owned by</span>
+                  <span class="vmgr__avatars">
+                    <img src="https://i.pravatar.cc/44?img=5" alt="" loading="lazy" />
+                    <img src="https://i.pravatar.cc/44?img=12" alt="" loading="lazy" />
+                    <img src="https://i.pravatar.cc/44?img=14" alt="" loading="lazy" />
+                    <img src="https://i.pravatar.cc/44?img=60" alt="" loading="lazy" />
+                  </span>
+                  <span class="vmgr__assign-count">4 owners</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .audience {
+    background: #fff;
+  }
+
+  /* ──────────── Header ──────────── */
+  .aud__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto clamp(2rem, 4vw, 3rem);
+  }
+
+  .aud__header h2 {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .aud__lead {
+    font-size: 1.0625rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  /* ──────────── Tabs ──────────── */
+  .aud__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .aud__tab {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+  }
+
+  .aud__tab:hover {
+    color: var(--color-fg);
+    border-color: #d4d9e3;
+  }
+
+  .aud__tab.is-active {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+
+  /* ──────────── Panels (grid-stacked, fade between) ──────────── */
+  .aud__panels {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .aud__panel {
+    grid-row: 1;
+    grid-column: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .aud__panel.is-active {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  @media (max-width: 880px) {
+    .aud__panel { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────── Left copy ──────────── */
+  .aud__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .aud__copy h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .aud__copy > p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    max-width: 500px;
+  }
+
+  /* ──────────── Inline testimonial ──────────── */
+  .aud__quote {
+    margin: 0.75rem 0 0;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .aud__quote blockquote {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--color-fg);
+    font-style: italic;
+  }
+
+  .aud__quote figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .aud__avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+
+  .aud__person {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .aud__person strong {
+    font-weight: 700;
+    color: var(--color-fg);
+    font-size: 0.875rem;
+  }
+
+  .aud__person span {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  .aud__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .aud__cta:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+
+  /* ──────────── Right visual frame ──────────── */
+  .aud__visual {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* ── Solo graphic ── */
+  .vsolo {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .vsolo__head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vsolo__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    object-fit: cover;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .vsolo__head strong { display: block; font-size: 0.875rem; font-weight: 700; color: var(--color-fg); }
+  .vsolo__head > div > span { font-size: 0.7rem; color: var(--color-muted); }
+
+  .vsolo__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  .vsolo__stat {
+    background: #fafbfd;
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .vsolo__label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); }
+  .vsolo__stat strong { font-size: 1.125rem; font-weight: 800; color: var(--color-fg); letter-spacing: -0.02em; }
+  .vsolo__trend { font-size: 0.65rem; font-weight: 700; color: var(--color-success); }
+
+  .vsolo__chart { padding-top: 0.5rem; border-top: 1px solid var(--color-border); }
+  .vsolo__chart-label { display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 0.5rem; }
+  .vsolo__chart svg { width: 100%; height: 50px; display: block; }
+
+  /* ── Team graphic ── */
+  .vteam {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .vteam__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vteam__head strong { font-size: 0.9375rem; font-weight: 700; color: var(--color-fg); }
+  .vteam__pill { font-size: 0.7rem; font-weight: 600; color: var(--color-accent); background: var(--color-accent-soft); padding: 3px 9px; border-radius: 999px; }
+
+  .vteam__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+  .vteam__list li {
+    display: grid;
+    grid-template-columns: 22px 24px 1fr auto;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0.75rem;
+    background: #fafbfd;
+    border-radius: 8px;
+    font-size: 0.875rem;
+  }
+
+  .vteam__face {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    flex-shrink: 0;
+  }
+
+  .vteam__rank {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--color-fg);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vteam__name { color: var(--color-fg); font-weight: 500; }
+  .vteam__score { font-weight: 700; color: var(--color-fg); }
+  .vteam__score--good { color: var(--color-success); }
+  .vteam__score--ok { color: var(--color-warning); }
+
+  .vteam__alert {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.85rem;
+    background: rgba(239, 68, 68, 0.08);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    color: var(--color-fg);
+  }
+
+  .vteam__alert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-danger);
+    flex-shrink: 0;
+  }
+
+  /* ── Manager graphic ── */
+  .vmgr {
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.25rem;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .vmgr__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .vmgr__head strong { font-size: 0.9375rem; font-weight: 700; color: var(--color-fg); }
+  .vmgr__pill { font-size: 0.7rem; font-weight: 600; color: var(--color-accent); background: var(--color-accent-soft); padding: 3px 9px; border-radius: 999px; }
+
+  .vmgr__clip {
+    display: grid;
+    grid-template-columns: 44px 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    background: #fafbfd;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    border-left: 3px solid var(--color-border);
+  }
+
+  .vmgr__clip--good { border-left-color: var(--color-success); }
+
+  .vmgr__time { font-family: var(--font-mono); font-size: 0.7rem; color: var(--color-muted); }
+  .vmgr__title { color: var(--color-fg); font-weight: 500; }
+  .vmgr__by { font-size: 0.7rem; color: var(--color-muted); font-weight: 600; }
+
+  .vmgr__assign {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.85rem;
+    background: var(--color-accent-soft);
+    border-radius: 8px;
+    margin-top: 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .vmgr__assign-label { font-weight: 600; color: var(--color-fg); }
+
+  .vmgr__avatars {
+    display: flex;
+  }
+
+  .vmgr__avatars img {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 2px solid #fff;
+    margin-left: -6px;
+  }
+
+  .vmgr__avatars img:first-child { margin-left: 0; }
+
+  .vmgr__assign-count {
+    margin-left: auto;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aud__panel, .aud__tab, .aud__cta { transition: none; }
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.aud__tab');
+  const panels = document.querySelectorAll<HTMLElement>('.aud__panel');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const id = tab.dataset.tab;
+      if (!id) return;
+
+      tabs.forEach((t) => {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', String(active));
+      });
+
+      panels.forEach((p) => {
+        p.classList.toggle('is-active', p.dataset.panel === id);
+      });
+    });
+  });
+</script>

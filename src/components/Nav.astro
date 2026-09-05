@@ -1,0 +1,383 @@
+---
+const navItems = [
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact us', href: '/contact' },
+];
+
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="brand" aria-label="Built Outcomes home">
+      <span class="brand__mark" aria-hidden="true">
+        <img src="/logo.webp" alt="" width="28" height="28" />
+      </span>
+      <span class="brand__name">Built Outcomes</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <div class="nav__cta">
+      <a href="/book-a-call" class="btn btn--accent">Book a call</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(14px);
+    background: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(230, 233, 240, 0.6);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 72px;
+    position: relative; /* anchor for backdrop */
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 1.125rem;
+    color: var(--color-fg);
+  }
+
+  .brand__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand__mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav__links > a {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.15s ease;
+  }
+
+  .nav__links > a:hover {
+    color: var(--color-fg);
+  }
+
+  /* ──────────── Mega-menu trigger ──────────── */
+  /* Stretch the dropdown wrapper to fill the full nav height so the cursor
+     moving from trigger → menu never crosses through "empty" nav space and
+     drops the :hover state. Menu still uses position:fixed to break out. */
+  .nav__dd {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__dd-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    padding: 0;
+    transition: color 0.15s ease;
+  }
+
+  .nav__dd-trigger svg {
+    transition: transform 0.2s ease;
+  }
+
+  .nav__dd:focus-within .nav__dd-trigger,
+  .nav__dd.is-open .nav__dd-trigger {
+    color: var(--color-fg);
+  }
+
+  .nav__dd:focus-within .nav__dd-trigger svg,
+  .nav__dd.is-open .nav__dd-trigger svg {
+    transform: rotate(180deg);
+  }
+
+  /* ──────────── Mega-menu panel — full-width below nav ──────────── */
+  .nav__dd-menu {
+    position: fixed;
+    top: 72px; /* directly below the nav, no gap */
+    left: 0;
+    right: 0;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav__dd:focus-within .nav__dd-menu,
+  .nav__dd.is-open .nav__dd-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* Inner card — constrained to container width, breathing room */
+  .nav__dd-card {
+    margin-top: 0.5rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  /* ──────────── Mega-menu grids ──────────── */
+  .mega--three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .mega--four {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  .mega--with-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
+    gap: 1.25rem;
+  }
+
+  .mega__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    align-content: start;
+  }
+
+  /* Individual item card */
+  .mega-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 10px;
+    transition: background 0.15s ease;
+  }
+
+  .mega-item:hover {
+    background: var(--color-surface);
+  }
+
+  .mega-item__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mega-item__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .mega-item__body strong {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    line-height: 1.3;
+  }
+
+  .mega-item__body > span {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    line-height: 1.4;
+  }
+
+  /* ──────────── Featured callout (Product menu only) ──────────── */
+  .mega-feature {
+    background: var(--color-accent-soft);
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .mega-feature__tag {
+    align-self: flex-start;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 6px;
+  }
+
+  .mega-feature h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    margin-top: 0.25rem;
+  }
+
+  .mega-feature p {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-muted);
+    flex: 1;
+  }
+
+  .mega-feature__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-accent);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-top: 0.4rem;
+    transition: gap 0.15s ease;
+  }
+
+  .mega-feature__cta:hover { gap: 0.6rem; }
+
+  /* ──────────── CTA + sign-in ──────────── */
+  .nav__cta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav__signin {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+
+  .nav__signin:hover {
+    color: var(--color-fg);
+  }
+
+  /* ──────────── Mobile fallback ──────────── */
+  @media (max-width: 980px) {
+    .nav__links { display: none; }
+    .nav__signin { display: none; }
+  }
+
+  @media (max-width: 1100px) {
+    .mega--with-feature {
+      grid-template-columns: 1fr;
+    }
+    .mega__items { grid-template-columns: repeat(2, 1fr); }
+    .mega--four { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<script>
+  const dropdowns = document.querySelectorAll<HTMLElement>('.nav__dd');
+  let openDD: HTMLElement | null = null;
+  // Hover-intent close delay (ms) — long enough for the cursor to cross the
+  // visual gap between the trigger and the fixed-positioned menu without the
+  // menu collapsing mid-travel.
+  const CLOSE_DELAY = 180;
+
+  const close = (dd: HTMLElement) => {
+    dd.classList.remove('is-open');
+    dd.querySelector('.nav__dd-trigger')?.setAttribute('aria-expanded', 'false');
+    if (openDD === dd) openDD = null;
+  };
+
+  const open = (dd: HTMLElement) => {
+    if (openDD && openDD !== dd) close(openDD);
+    dd.classList.add('is-open');
+    dd.querySelector('.nav__dd-trigger')?.setAttribute('aria-expanded', 'true');
+    openDD = dd;
+  };
+
+  dropdowns.forEach((dd) => {
+    const trigger = dd.querySelector<HTMLButtonElement>('.nav__dd-trigger');
+    const menu = dd.querySelector<HTMLElement>('.nav__dd-menu');
+    let closeTimer: number | undefined;
+
+    const cancelClose = () => {
+      if (closeTimer !== undefined) {
+        window.clearTimeout(closeTimer);
+        closeTimer = undefined;
+      }
+    };
+
+    const scheduleClose = () => {
+      cancelClose();
+      closeTimer = window.setTimeout(() => close(dd), CLOSE_DELAY);
+    };
+
+    // Hover on the trigger opens immediately; leaving it starts the close
+    // timer. Entering the menu cancels the timer; leaving the menu reschedules.
+    // This bridges the visual gap between the trigger and the fixed-positioned
+    // menu — the cursor has CLOSE_DELAY ms to cross that gap before close fires.
+    trigger?.addEventListener('mouseenter', () => {
+      cancelClose();
+      open(dd);
+    });
+    trigger?.addEventListener('mouseleave', scheduleClose);
+    menu?.addEventListener('mouseenter', cancelClose);
+    menu?.addEventListener('mouseleave', scheduleClose);
+
+    // Click toggle for touch devices and keyboard activation
+    trigger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cancelClose();
+      dd.classList.contains('is-open') ? close(dd) : open(dd);
+    });
+  });
+
+  // Click outside any open dropdown closes it
+  document.addEventListener('click', (e) => {
+    if (openDD && !openDD.contains(e.target as Node)) close(openDD);
+  });
+
+  // Escape closes the open dropdown and returns focus to the trigger
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && openDD) {
+      const dd = openDD;
+      close(dd);
+      dd.querySelector<HTMLButtonElement>('.nav__dd-trigger')?.focus();
+    }
+  });
+</script>

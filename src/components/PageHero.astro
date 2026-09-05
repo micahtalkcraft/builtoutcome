@@ -1,0 +1,83 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  flush?: boolean;
+  tone?: 'default' | 'blue';
+}
+
+const { eyebrow, title, description, primaryCta, secondaryCta, flush = false, tone = 'default' } = Astro.props;
+---
+
+<section class={`page-hero${flush ? ' page-hero--flush' : ''}${tone === 'blue' ? ' page-hero--blue' : ''}`}>
+  <div class="container">
+    {eyebrow && <span class="eyebrow page-hero__eyebrow">{eyebrow}</span>}
+    <h1 class="page-hero__title">
+      <slot name="title">{title}</slot>
+    </h1>
+    {description && <p class="lead page-hero__lead">{description}</p>}
+    {(primaryCta || secondaryCta) && (
+      <div class="page-hero__cta">
+        {primaryCta && (
+          <a href={primaryCta.href} class="btn btn--accent btn--lg">{primaryCta.label}</a>
+        )}
+        {secondaryCta && (
+          <a href={secondaryCta.href} class="btn btn--ghost btn--lg">{secondaryCta.label}</a>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    padding-block: clamp(4rem, 7vw, 6rem);
+    text-align: center;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* `flush` variant — for pages where the section directly below shares the
+     same background and shouldn't be visually separated from the hero. */
+  .page-hero--flush {
+    border-bottom: 0;
+    padding-bottom: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  /* `blue` tone — light blue tint with a vibrant dot grid. Sections below
+     can extend the same pattern so it flows seamlessly across boundaries. */
+  .page-hero--blue {
+    background-color: #fff;
+    background-image: none;
+    border-bottom: 0;
+  }
+
+  .page-hero__eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .page-hero__title {
+    margin: 0 auto 1.25rem;
+    max-width: 800px;
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  .page-hero__lead {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .page-hero__cta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+</style>

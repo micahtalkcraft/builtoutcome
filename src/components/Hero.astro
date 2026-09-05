@@ -1,0 +1,628 @@
+---
+
+---
+
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <canvas class="hero__bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Floating cards · left -->
+  <div class="hero__cards hero__cards--left" aria-hidden="true">
+    <div class="fcard fcard--chart">
+      <div class="fcard__head">
+        <span class="fcard__title">Hours Saved This Week</span>
+        <svg class="fcard__caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="fcard__chart">
+        <span class="fcard__pin">247</span>
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path d="M0 45 L20 38 L40 50 L60 28 L80 33 L100 12 L120 22 L140 8 L160 26 L180 18 L200 24" stroke="#ef4444" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="fcard__days">
+          <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fcard fcard--metric">
+      <button class="fcard__btn">Details</button>
+      <div class="fcard__big">38%</div>
+      <div class="fcard__label">Throughput Gain</div>
+    </div>
+  </div>
+
+  <!-- Center stack -->
+  <div class="hero__center">
+    <span class="hero__eyebrow">Trusted by 40+ businesses since 2021</span>
+
+    <h1 class="hero__h1">
+      <span class="hero__hl">Software &amp; AI</span>, built<br />
+      for business <span class="hero__ul">
+        outcomes
+        <svg class="hero__ul-svg" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M3 6 Q 35 1, 70 5 T 140 5 T 197 4" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </h1>
+
+    <p class="hero__sub">
+      We integrate the right software and AI into the tools you already run —
+      so every project ends with a measurable result, not just a launch.
+    </p>
+
+    <form class="hero__form" id="hero-book-form">
+      <input type="email" name="email" placeholder="Enter your work email" required aria-label="Work email" />
+      <button type="submit" class="btn btn--accent">Book a call</button>
+    </form>
+
+    <script>
+      // No booking backend — turn the email capture into a pre-filled email
+      // to micah@talkcraftai.com instead of navigating to a dead route.
+      const bookForm = document.getElementById('hero-book-form') as HTMLFormElement | null;
+      bookForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = (bookForm.querySelector('input[name="email"]') as HTMLInputElement | null)?.value ?? '';
+        const body = encodeURIComponent(
+          `Hi Built Outcomes,\n\nI'd like to book a call. You can reach me at: ${email}\n`
+        );
+        window.location.href = `mailto:micah@talkcraftai.com?subject=${encodeURIComponent('Book a call')}&body=${body}`;
+      });
+    </script>
+
+    <div class="hero__social">
+      <div class="hero__avatars" aria-hidden="true">
+        <img src="https://i.pravatar.cc/72?img=12" alt="" width="36" height="36" loading="lazy" />
+        <img src="https://i.pravatar.cc/72?img=32" alt="" width="36" height="36" loading="lazy" />
+        <img src="https://i.pravatar.cc/72?img=47" alt="" width="36" height="36" loading="lazy" />
+        <img src="https://i.pravatar.cc/72?img=68" alt="" width="36" height="36" loading="lazy" />
+        <img src="https://i.pravatar.cc/72?img=24" alt="" width="36" height="36" loading="lazy" />
+      </div>
+      <div class="hero__rating">
+        <div class="hero__stars" aria-label="Rated 4.9 out of 5 stars">
+          {Array.from({ length: 5 }).map(() => (
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.6.6-5.8 5 1.8 7.4L12 17.8 5.5 21.9l1.8-7.4-5.8-5 7.6-.6L12 2z"/></svg>
+          ))}
+        </div>
+        <div class="hero__rating-text"><strong>4.9</strong> · Rated by the businesses we've transformed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating cards · right -->
+  <div class="hero__cards hero__cards--right" aria-hidden="true">
+    <div class="fcard fcard--small">
+      <span class="fcard__title">Hours Automated / Year</span>
+      <div class="fcard__row">
+        <span class="fcard__icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span class="fcard__num">12,000</span>
+      </div>
+    </div>
+
+    <div class="fcard fcard--pipe">
+      <div class="fcard__head">
+        <span class="fcard__title">Outcome Metric</span>
+        <span class="fcard__pill">On track</span>
+      </div>
+      <div class="fcard__big">$640,124</div>
+      <div class="fcard__progress">
+        <span class="fcard__dot"></span>
+        <span class="fcard__progress-label">Q4 target</span>
+        <span class="fcard__bar"><span style="width:72%"></span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Solid blue tint base. Dots are drawn on the canvas overlay below
+     so each one can react to the cursor independently. */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    background-color: #fdf1e7;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero__bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Center stack */
+  .hero__center {
+    position: relative;
+    z-index: 3;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .hero__eyebrow {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.25rem;
+  }
+
+  .hero__hl {
+    display: inline-block;
+    color: var(--color-fg);
+    padding: 0.05em 0.15em;
+    border-radius: 6px;
+    line-height: 1;
+    background-color: transparent;
+    background-image: linear-gradient(#ffbe85, #ffbe85);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0% 100%;
+    animation: hl-sweep 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  }
+
+  @keyframes hl-sweep {
+    to { background-size: 100% 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__hl {
+      animation: none;
+      background-size: 100% 100%;
+    }
+  }
+
+  .hero__ul {
+    position: relative;
+    display: inline-block;
+    color: var(--color-accent);
+  }
+
+  .hero__ul-svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.3em;
+    width: 100%;
+    height: 0.32em;
+    color: var(--color-accent);
+    overflow: visible;
+  }
+
+  .hero__sub {
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    line-height: 1.55;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* Pill email form */
+  .hero__form {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 5px;
+    max-width: 440px;
+    margin: 2rem auto 0;
+  }
+
+  .hero__form:focus-within {
+    border-color: var(--color-accent);
+  }
+
+  .hero__form input {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    padding: 0.55rem 1rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--color-fg);
+    outline: none;
+    min-width: 0;
+  }
+
+  .hero__form input::placeholder {
+    color: var(--color-subtle);
+  }
+
+  .hero__form button {
+    border-radius: 999px;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+
+  .hero__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 1.25rem;
+  }
+
+  .hero__avatars {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .hero__avatars img {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 2px solid #fff;
+    margin-left: -10px;
+    object-fit: cover;
+    background: var(--color-accent-soft);
+  }
+
+  .hero__avatars img:first-child {
+    margin-left: 0;
+  }
+
+  .hero__rating {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero__stars {
+    display: inline-flex;
+    gap: 1px;
+    color: #f59e0b;
+    line-height: 1;
+  }
+
+  .hero__rating-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+
+  .hero__rating-text strong {
+    color: var(--color-fg);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+
+  /* Floating-card columns */
+  .hero__cards {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    pointer-events: none;
+  }
+
+  .hero__cards--left { left: -32px; align-items: flex-start; }
+  .hero__cards--right { right: -32px; align-items: flex-end; }
+
+  .hero__cards--left .fcard:nth-child(1) { margin-left: 0; }
+  .hero__cards--left .fcard:nth-child(2) { margin-left: -56px; }
+  .hero__cards--right .fcard:nth-child(1) { margin-right: 0; }
+  .hero__cards--right .fcard:nth-child(2) { margin-right: -56px; }
+
+  .fcard {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 0.95rem 1.1rem;
+    width: 240px;
+  }
+
+  .fcard__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .fcard__title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-fg);
+  }
+
+  .fcard__caret {
+    color: var(--color-muted);
+    flex-shrink: 0;
+  }
+
+  /* Chart card */
+  .fcard__chart {
+    position: relative;
+    margin-top: 0.5rem;
+  }
+
+  .fcard__pin {
+    position: absolute;
+    top: -4px;
+    left: 32%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--color-fg);
+    padding: 2px 8px;
+    border-radius: 999px;
+    z-index: 1;
+  }
+
+  .fcard__chart svg {
+    width: 100%;
+    height: 56px;
+    display: block;
+    margin-top: 6px;
+  }
+
+  .fcard__days {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+  }
+
+  /* Metric card */
+  .fcard--metric {
+    padding-top: 0.85rem;
+  }
+
+  .fcard__btn {
+    display: block;
+    margin-left: auto;
+    margin-bottom: 0.6rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--color-fg);
+    color: #fff;
+  }
+
+  .fcard__big {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--color-fg);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .fcard__label {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.35rem;
+  }
+
+  /* Right top — small */
+  .fcard--small .fcard__row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.55rem;
+  }
+
+  .fcard__icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: rgba(34, 197, 94, 0.16);
+    color: var(--color-success);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fcard__num {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    letter-spacing: -0.01em;
+  }
+
+  /* Right bottom — pipeline */
+  .fcard__pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--color-success);
+    padding: 3px 9px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  .fcard--pipe .fcard__big {
+    margin-top: 0.55rem;
+    font-size: 1.5rem;
+  }
+
+  .fcard__progress {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.6rem;
+    background: var(--color-accent-soft);
+    padding: 0.4rem 0.6rem;
+    border-radius: 999px;
+  }
+
+  .fcard__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .fcard__progress-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .fcard__bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .fcard__bar > span {
+    display: block;
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: inherit;
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .hero__cards { display: none; }
+  }
+
+  @media (max-width: 520px) {
+    .hero__form {
+      flex-direction: column;
+      border-radius: 14px;
+      padding: 8px;
+      gap: 6px;
+    }
+    .hero__form input {
+      width: 100%;
+      text-align: center;
+    }
+    .hero__form button {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+</style>
+
+<script>
+  // Per-dot canvas repulsion. Each dot has an "origin" position and lerps
+  // toward a target that's pushed outward by the cursor when nearby.
+  const hero = document.querySelector<HTMLElement>('.hero');
+  const canvas = document.querySelector<HTMLCanvasElement>('.hero__bg-canvas');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (hero && canvas) {
+    const ctx = canvas.getContext('2d')!;
+
+    const SPACING = 22;          // grid step in CSS px
+    const RADIUS = 1.2;          // dot radius
+    const COLOR = 'rgba(234, 88, 12, 0.32)';
+    const REPULSE_RADIUS = 130;  // cursor influence in CSS px
+    const REPULSE_STRENGTH = 36; // max push per dot
+    const EASE = 0.18;           // springiness toward target
+
+    type Dot = { ox: number; oy: number; x: number; y: number };
+    let dots: Dot[] = [];
+    let mx = -9999, my = -9999;
+    let raf: number | null = null;
+
+    const draw = () => {
+      const w = hero.clientWidth;
+      const h = hero.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = COLOR;
+      let active = false;
+      for (const d of dots) {
+        let tx = d.ox, ty = d.oy;
+        if (fineHover && !reduced) {
+          const dx = d.ox - mx;
+          const dy = d.oy - my;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < REPULSE_RADIUS && dist > 0.1) {
+            const f = (1 - dist / REPULSE_RADIUS) * REPULSE_STRENGTH;
+            tx = d.ox + (dx / dist) * f;
+            ty = d.oy + (dy / dist) * f;
+          }
+        }
+        const ndx = tx - d.x;
+        const ndy = ty - d.y;
+        d.x += ndx * EASE;
+        d.y += ndy * EASE;
+        if (Math.abs(ndx) > 0.05 || Math.abs(ndy) > 0.05) active = true;
+
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, RADIUS, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      raf = active ? requestAnimationFrame(draw) : null;
+    };
+
+    const ensureTick = () => {
+      if (!raf) raf = requestAnimationFrame(draw);
+    };
+
+    const buildDots = () => {
+      const w = hero.clientWidth;
+      const h = hero.clientHeight;
+      dots = [];
+      for (let y = SPACING; y < h; y += SPACING) {
+        for (let x = SPACING; x < w; x += SPACING) {
+          dots.push({ ox: x, oy: y, x, y });
+        }
+      }
+    };
+
+    const resize = () => {
+      const w = hero.clientWidth;
+      const h = hero.clientHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      buildDots();
+      ensureTick();
+    };
+
+    if (fineHover && !reduced) {
+      hero.addEventListener('mousemove', (e) => {
+        const r = hero.getBoundingClientRect();
+        mx = e.clientX - r.left;
+        my = e.clientY - r.top;
+        ensureTick();
+      });
+      hero.addEventListener('mouseleave', () => {
+        mx = -9999; my = -9999;
+        ensureTick();
+      });
+    }
+
+    new ResizeObserver(resize).observe(hero);
+    resize();
+  }
+</script>

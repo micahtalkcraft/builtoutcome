@@ -1,0 +1,101 @@
+---
+
+---
+
+<section class="cta-final" id="cta">
+  <div class="cta-final__bg" aria-hidden="true"></div>
+  <div class="container cta-final__inner">
+    <span class="eyebrow eyebrow--dark">Ready when you are</span>
+    <h2>Ready to build outcomes, not just software?</h2>
+    <p class="lead">
+      A short discovery sprint, a growth target we agree together, and a
+      measurable result to show for it. No hype, no jargon, no open-ended billing.
+    </p>
+
+    <div class="cta-final__buttons">
+      <a href="/book-a-call" class="btn btn--accent btn--lg">
+        Book a call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:micah@talkcraftai.com" class="btn btn--ghost-dark btn--lg">Email micah@talkcraftai.com</a>
+    </div>
+
+    <ul class="cta-final__points">
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Works with the tools you already run</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Fixed-price discovery</li>
+      <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> You own everything we build</li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .cta-final {
+    position: relative;
+    background: var(--color-accent);
+    color: #fff;
+    padding-block: clamp(5rem, 10vw, 8rem);
+    overflow: hidden;
+  }
+
+  /* White primary button reads better on the orange band than orange-on-orange */
+  .cta-final :global(.btn--accent) {
+    background: #fff;
+    color: var(--color-accent);
+  }
+
+  .cta-final :global(.btn--accent:hover) {
+    background: #fff4ec;
+  }
+
+  .cta-final__bg {
+    display: none;
+  }
+
+  .cta-final__inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+
+  .cta-final h2 {
+    color: #fff;
+    margin: 1.25rem 0 1rem;
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  }
+
+  .cta-final .lead {
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .cta-final__buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .cta-final__points {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 2.25rem 0 0;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .cta-final__points li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .cta-final__points svg {
+    color: #fff;
+  }
+</style>

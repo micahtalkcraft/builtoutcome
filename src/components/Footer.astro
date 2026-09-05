@@ -1,0 +1,178 @@
+---
+// Mirrors the nav so the footer is consistent with the header.
+const cols = [
+  {
+    title: 'Explore',
+    links: [
+      { label: 'Home', href: '/' },
+      { label: 'What we do', href: '/#features' },
+      { label: 'Integrations', href: '/#integrations' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'About us', href: '/about' },
+    ],
+  },
+  {
+    title: 'Get in touch',
+    links: [
+      { label: 'Book a call', href: '/book-a-call' },
+      { label: 'Contact us', href: '/contact' },
+      { label: 'micah@talkcraftai.com', href: 'mailto:micah@talkcraftai.com' },
+    ],
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" id="contact">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="/" class="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <img src="/logo.webp" alt="" width="28" height="28" />
+        </span>
+        <span class="brand__name">Built Outcomes</span>
+      </a>
+      <p>We integrate software and AI into your business — and stay accountable to the outcome, from first workshop to final report.</p>
+    </div>
+
+    <div class="footer__cols">
+      {cols.map((c) => (
+        <div class="footer__col">
+          <h4>{c.title}</h4>
+          <ul>
+            {c.links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <span>&copy; {year} Built Outcomes. All rights reserved.</span>
+    <span class="footer__badges">
+      <span class="footer__badge">GDPR ready</span>
+      <span class="footer__badge">NDA friendly</span>
+      <span class="footer__badge">You own the code</span>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+    padding-block: 4rem 2rem;
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.3fr 2.7fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (max-width: 880px) {
+    .footer__inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .footer__brand p {
+    margin-top: 1rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    max-width: 320px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 1.125rem;
+    color: var(--color-fg);
+  }
+
+  .brand__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand__mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 720px) {
+    .footer__cols { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .footer__cols { grid-template-columns: 1fr; }
+  }
+
+  .footer__col h4 {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-subtle);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .footer__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer__col a {
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    transition: color 0.15s ease;
+  }
+
+  .footer__col a:hover {
+    color: var(--color-fg);
+  }
+
+  .footer__bottom {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  .footer__badges {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  .footer__badge {
+    padding: 4px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+  }
+</style>

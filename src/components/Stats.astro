@@ -1,0 +1,239 @@
+---
+const stats = [
+  {
+    target: 40,
+    suffix: '+',
+    label: 'Businesses transformed since 2021',
+    trend: 12,
+  },
+  {
+    target: 3.2,
+    suffix: 'x',
+    decimals: 1,
+    label: 'Average ROI across engagements',
+    trend: 8,
+  },
+  {
+    target: 12000,
+    thousands: true,
+    label: 'Hours automated per year for our clients',
+    trend: 18,
+  },
+  {
+    target: 100,
+    suffix: '%',
+    label: 'Outcomes measured & reported back',
+  },
+];
+---
+
+<section class="stats">
+  <svg class="stats__bg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Tiled pattern of filled cells (~10% density) — 80px cells, 8×6 tile.
+           Subtle white tint so cells sit slightly LIGHTER than the section bg,
+           but only by a hair — not enough to read as grey. -->
+      <pattern id="stats-cells" x="0" y="0" width="640" height="480" patternUnits="userSpaceOnUse">
+        <rect x="80" y="0" width="80" height="80" fill="rgba(255,255,255,0.04)" />
+        <rect x="320" y="160" width="80" height="80" fill="rgba(255,255,255,0.04)" />
+        <rect x="560" y="240" width="80" height="80" fill="rgba(255,255,255,0.04)" />
+        <rect x="160" y="320" width="80" height="80" fill="rgba(255,255,255,0.04)" />
+        <rect x="480" y="80" width="80" height="80" fill="rgba(255,255,255,0.04)" />
+        <rect x="0" y="400" width="80" height="80" fill="rgba(255,255,255,0.04)" />
+      </pattern>
+      <!-- Grid lines on top of the cells -->
+      <pattern id="stats-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="2" stroke-linecap="round" />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#stats-cells)" />
+    <rect width="100%" height="100%" fill="url(#stats-grid)" />
+  </svg>
+
+  <div class="container stats__inner">
+    <header class="section-header">
+      <span class="eyebrow eyebrow--dark">By the numbers</span>
+      <h2 class="stats__heading">Businesses working with Built Outcomes <span class="text-gradient">grow faster</span> and measure <span class="text-gradient">everything</span>.</h2>
+    </header>
+
+    <div class="stats__grid">
+      {stats.map((s) => (
+        <div class="stat">
+          <div class="stat__row">
+            <span
+              class="stat__value"
+              data-target={s.target}
+              data-prefix={s.prefix ?? ''}
+              data-suffix={s.suffix ?? ''}
+              data-decimals={s.decimals ?? 0}
+              data-thousands={s.thousands ? 'true' : 'false'}
+            >
+              {s.prefix ?? ''}0{s.suffix ?? ''}
+            </span>
+            {s.trend != null && (
+              <span class="stat__trend">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 14 12 8 18 14"/></svg>
+                <span class="stat__trend-num" data-target={s.trend} data-prefix="+" data-suffix="%">+0%</span>
+              </span>
+            )}
+          </div>
+          <div class="stat__label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    position: relative;
+    background-color: var(--color-dark);
+    color: var(--color-dark-fg);
+    padding-block: var(--section-pad);
+    overflow: hidden;
+  }
+
+  .stats__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .stats__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Local override — drop the outline on the section's eyebrow pill */
+  .stats .eyebrow--dark {
+    border: 0;
+  }
+
+  .stats__heading {
+    color: #fff;
+  }
+
+  .stats__heading + p { color: var(--color-dark-muted); }
+  .stats .section-header p { color: var(--color-dark-muted); }
+
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 880px) {
+    .stats__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stat {
+    padding: 1.5rem 1.5rem 1.6rem;
+    background: var(--color-dark-2);
+    border-radius: var(--radius-lg);
+    text-align: left;
+  }
+
+  .stat__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .stat__value {
+    font-size: clamp(2rem, 3.5vw, 2.875rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat__trend {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    padding: 3px 8px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .stat__trend-num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat__label {
+    font-size: 0.9375rem;
+    color: var(--color-dark-muted);
+    line-height: 1.45;
+  }
+</style>
+
+<script>
+  // Count-up animation that fires when each .stat enters the viewport.
+  // Uses ease-out cubic for a natural settle.
+  const stats = document.querySelectorAll<HTMLElement>('.stat');
+  if (stats.length) {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const formatValue = (n: number, el: HTMLElement) => {
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const thousands = el.dataset.thousands === 'true';
+
+      let str: string;
+      if (decimals > 0) {
+        str = n.toFixed(decimals);
+      } else if (thousands) {
+        str = Math.round(n).toLocaleString();
+      } else {
+        str = String(Math.round(n));
+      }
+      return prefix + str + suffix;
+    };
+
+    const animateValue = (el: HTMLElement) => {
+      const target = parseFloat(el.dataset.target || '0');
+      if (reduced || isNaN(target)) {
+        el.textContent = formatValue(target, el);
+        return;
+      }
+      const duration = 1500;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        el.textContent = formatValue(target * eased, el);
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll<HTMLElement>('[data-target]').forEach(animateValue);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    stats.forEach((stat) => observer.observe(stat));
+  }
+</script>

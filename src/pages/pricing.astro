@@ -1,0 +1,1314 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import PageHero from '../components/PageHero.astro';
+
+// Three service areas — every engagement is quoted individually, so no
+// price values here, just what each area covers.
+const QUOTE_MAILTO = 'mailto:micah@talkcraftai.com?subject=Get%20a%20quote';
+
+const services = [
+  {
+    id: 'marketing',
+    name: 'Marketing',
+    desc: 'Campaigns, funnels, and content built to bring you customers — measured against real pipeline, not vanity metrics.',
+    features: [
+      'Campaigns & funnels that convert',
+      'Content built around your customers',
+      'Tracking wired into your CRM',
+      'Measured against pipeline & revenue',
+      'Plain-English monthly reporting',
+    ],
+  },
+  {
+    id: 'automation',
+    name: 'Automation',
+    desc: 'AI and workflow automation wired into the tools you already run — intake, follow-ups, invoicing, reporting.',
+    features: [
+      'AI wired into your existing tools',
+      'Intake, triage & follow-ups automated',
+      'Invoicing & reporting on autopilot',
+      'Systems connected, no copy-paste',
+      'Hours-saved tracked & reported',
+    ],
+  },
+  {
+    id: 'growth',
+    name: 'Business Growth',
+    desc: 'The full engine — systems connected, information flowing, and a growth target we agree on and measure together.',
+    features: [
+      'Marketing & automation combined',
+      'One connected stack across departments',
+      'A growth target agreed up front',
+      'Live outcome dashboard',
+      'Quarterly strategy reviews',
+    ],
+  },
+];
+
+
+const faqs = [
+  {
+    q: 'How does Built Outcomes pricing work?',
+    a: 'Every engagement is quoted individually. Tell us what you need — marketing, automation, or the full growth engine — and after a short discovery call we come back with a fixed quote tied to an outcome we agree together. There is no open-ended hourly billing, ever.',
+  },
+  {
+    q: 'What happens before we get a quote?',
+    a: 'A short discovery conversation — usually one call. We map your workflows and systems, find where the work will pay back fastest, and agree the target metric with you. You leave with a scoped proposal and a fixed quote. If you decide not to continue, no obligation.',
+  },
+  {
+    q: 'What does a quote include?',
+    a: 'A fixed price, a timeline, the agreed outcome metric, and exactly what ships. If the scope changes along the way, we re-quote before doing more work — the bill never surprises you.',
+  },
+  {
+    q: 'Do we have to replace the tools we already use?',
+    a: "No — that's the point. We integrate into your existing CRM, billing, ops, and support tools rather than replacing them. We work inside your systems and permissions, sign an NDA and data processing agreement, and everything we build belongs to you.",
+  },
+  {
+    q: 'What about ongoing support after the project?',
+    a: 'Optional and quoted just like the rest. If you want us to keep monitoring and improving what we built, we agree a simple monthly arrangement you can cancel anytime — and everything keeps working either way.',
+  },
+];
+---
+
+<Layout
+  title="Pricing — Built Outcomes"
+  description="Marketing, automation, and business growth engagements — each scoped to your business with a fixed quote tied to an agreed outcome. No open-ended hourly billing."
+>
+  <Nav />
+  <main>
+    <PageHero
+      title="Pricing tied to outcomes — not hours."
+      description="Every engagement is quoted for your business — a fixed price tied to an outcome we agree together. Tell us what you need and we'll come back with a quote. No hourly billing, no surprises."
+      flush
+      tone="blue"
+    >
+      <Fragment slot="title">
+        Pricing tied to <span class="pricing-ul">outcomes<svg viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 6 Q 35 1, 70 5 T 140 5 T 197 4" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></span> — not hours.
+      </Fragment>
+    </PageHero>
+
+    <section class="pricing-tiers section">
+      <div class="container">
+
+        <!-- Service cards -->
+        <div class="tier-grid">
+          {services.map((s) => (
+            <article class="tier">
+              <h2 class="tier__name">{s.name}</h2>
+
+              <div class="tier__price">
+                <strong>Get a free quote</strong>
+              </div>
+
+              <p class="tier__desc">{s.desc}</p>
+
+              <a href={QUOTE_MAILTO} class="btn btn--lg btn--accent tier__cta">Get a quote</a>
+
+              <ul class="tier__features">
+                {s.features.map((f) => (
+                  <li>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+    <section class="pricing-trust section">
+      <div class="container">
+        <!-- Logo strip -->
+        <div class="trust__logos">
+          <p class="trust__logos-label">Trusted by 40+ businesses</p>
+          <div class="trust__logos-row">
+            <span>Northbeam</span>
+            <span>Vortex</span>
+            <span>Deelio</span>
+            <span>Helix Labs</span>
+            <span>Quanta</span>
+            <span>Streamline</span>
+            <span>Prismic</span>
+          </div>
+        </div>
+
+        <!-- Featured testimonial -->
+        <figure class="trust__featured">
+          <span class="trust__quote-mark" aria-hidden="true">&ldquo;</span>
+          <blockquote>
+            Built Outcomes connected our CRM, billing, and support systems and automated the intake queue. Response times dropped <strong>from two days to four hours</strong> — and they report the numbers to us every month, exactly as promised.
+          </blockquote>
+          <figcaption>
+            <img class="trust__avatar" src="https://i.pravatar.cc/96?img=33" alt="" loading="lazy" width="48" height="48" />
+            <div>
+              <strong>Jordan Mata</strong>
+              <span>COO · Northbeam</span>
+            </div>
+            <div class="trust__stars" aria-label="5 out of 5">
+              {Array.from({ length: 5 }).map(() => (
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l2.9 6.9 7.6.6-5.8 5 1.8 7.4L12 17.8 5.5 21.9l1.8-7.4-5.8-5 7.6-.6L12 2z"/></svg>
+              ))}
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- Stats row -->
+        <div class="trust__stats">
+          <div class="trust__stat">
+            <strong>40+</strong>
+            <span>Businesses transformed since 2021</span>
+          </div>
+          <div class="trust__stat">
+            <strong>12k</strong>
+            <span>Hours automated per year for our clients</span>
+          </div>
+          <div class="trust__stat">
+            <strong>3.2x</strong>
+            <span>Average ROI across engagements</span>
+          </div>
+          <div class="trust__stat">
+            <strong>100%</strong>
+            <span>Engagements with a measured outcome</span>
+          </div>
+        </div>
+
+        <!-- Integrates with -->
+        <div class="trust__integrations">
+          <h3>Integrates with the tools you already use</h3>
+          <ul class="trust__int-row">
+            <li class="trust__int" style="--tint:#1f4a35"><img src="/integrations/google-meet.webp" alt="Google Meet" loading="lazy" /></li>
+            <li class="trust__int" style="--tint:#1a3f63"><img src="/integrations/zoom.webp" alt="Zoom" loading="lazy" /></li>
+            <li class="trust__int" style="--tint:#2f2655"><img src="/integrations/teams.webp" alt="Microsoft Teams" loading="lazy" /></li>
+            <li class="trust__int" style="--tint:#52401c"><img src="/integrations/slack.webp" alt="Slack" loading="lazy" /></li>
+            <li class="trust__int" style="--tint:#163e5e"><img src="/integrations/salesforce.webp" alt="Salesforce" loading="lazy" /></li>
+            <li class="trust__int" style="--tint:#52201d"><img src="/integrations/gmail.webp" alt="Gmail" loading="lazy" /></li>
+          </ul>
+          <p class="trust__int-more">and <strong>120+ more tools</strong> to connect</p>
+        </div>
+
+        <!-- Final CTA + trust points -->
+        <div class="trust__cta-block">
+          <a href="mailto:micah@talkcraftai.com?subject=Book%20a%20call" class="btn btn--accent btn--lg">Book a free strategy call</a>
+          <ul class="trust__cta-points">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Outcome agreed up front
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              No open-ended hourly billing
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Cancel retainers anytime
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="faq section">
+      <div class="container container-narrow">
+        <header class="section-header">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions, answered.</h2>
+        </header>
+        <div class="faq__list">
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <FinalCTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .pricing-tiers {
+    /* Same tint AND dot pattern as the hero so the two sections read as one
+       continuous blue panel — dots align and flow across the boundary. */
+    background-color: #fff;
+    /* Hero is `flush` — sit closer underneath without the section gap */
+    padding-top: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  /* ──────────── Hero squiggle underline ──────────── */
+  :global(.pricing-ul) {
+    position: relative;
+    display: inline-block;
+    color: var(--color-accent);
+    white-space: nowrap;
+  }
+
+  :global(.pricing-ul) svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.3em;
+    width: 100%;
+    height: 0.3em;
+    color: var(--color-accent);
+    overflow: visible;
+  }
+
+  /* ──────────── Calculator ──────────── */
+  .pricing-calc {
+    background: #fff;
+  }
+
+  .calc {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .calc { grid-template-columns: 1fr; }
+  }
+
+  .calc__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .calc-card {
+    padding: 1.4rem 1.5rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .calc-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.85rem;
+  }
+
+  .calc-card__label {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-fg);
+  }
+
+  .calc-card__value {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    padding: 4px 10px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .calc-card__range {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+
+  /* Toggle card */
+  .calc-card--toggle { padding: 1.25rem 1.5rem; }
+
+  .calc-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .calc-toggle-row__copy { display: flex; flex-direction: column; gap: 2px; }
+  .calc-toggle-row__copy strong {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-fg);
+  }
+  .calc-toggle-row__copy span {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+  .calc-toggle-row__copy em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  /* Custom switch */
+  .calc-switch {
+    position: relative;
+    width: 44px;
+    height: 26px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .calc-switch input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .calc-switch__track {
+    position: absolute;
+    inset: 0;
+    background: var(--color-border);
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+
+  .calc-switch__track::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 999px;
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .calc-switch input:checked + .calc-switch__track {
+    background: var(--color-accent);
+  }
+
+  .calc-switch input:checked + .calc-switch__track::before {
+    transform: translateX(18px);
+  }
+
+  /* Summary panel */
+  .calc__summary {
+    /* sticky on wide screens, scrolls with content on narrow */
+  }
+
+  .calc__summary-inner {
+    position: sticky;
+    top: 88px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .calc__summary-inner h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-fg);
+  }
+
+  .calc__summary-inner h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .calc__summary-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .calc__summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0.75rem;
+    background: var(--color-accent-soft);
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    color: var(--color-fg);
+  }
+
+  .calc__summary-row strong {
+    font-weight: 700;
+    color: var(--color-accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .calc__summary-section { display: flex; flex-direction: column; }
+
+  .calc__breakdown {
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .calc__breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+  }
+
+  .calc__breakdown-row span { color: var(--color-muted); }
+  .calc__breakdown-row strong {
+    font-weight: 700;
+    color: var(--color-fg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .calc__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .calc__total > span {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-fg);
+  }
+
+  .calc__total > strong {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--color-fg);
+    letter-spacing: -0.025em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .calc__total em {
+    font-style: normal;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    margin-left: 4px;
+  }
+
+  .calc__total-note {
+    font-size: 0.75rem;
+    color: var(--color-success);
+    font-weight: 600;
+    margin-top: -0.5rem;
+  }
+
+  .calc__cta { margin-top: 0.5rem; width: 100%; }
+
+  /* ──────────── Trust section (dark variant) ──────────── */
+  .pricing-trust {
+    background: var(--color-dark);
+    color: var(--color-dark-fg);
+  }
+
+  .trust__logos {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .trust__logos-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-dark-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .trust__logos-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.75rem 2.5rem;
+  }
+
+  .trust__logos-row span {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  /* Featured testimonial */
+  .trust__featured {
+    margin: 0 auto clamp(3rem, 5vw, 4rem);
+    max-width: 820px;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+    background: var(--color-dark-2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+    position: relative;
+  }
+
+  .trust__quote-mark {
+    position: absolute;
+    top: 1rem;
+    left: 1.25rem;
+    font-size: clamp(4rem, 7vw, 6rem);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    opacity: 0.55;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .trust__featured blockquote {
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 1.45;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.005em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .trust__featured blockquote strong {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .trust__featured figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .trust__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .trust__featured figcaption strong {
+    display: block;
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.9375rem;
+  }
+
+  .trust__featured figcaption span {
+    font-size: 0.8125rem;
+    color: var(--color-dark-muted);
+  }
+
+  .trust__stars {
+    margin-left: auto;
+    display: inline-flex;
+    gap: 2px;
+  }
+
+  /* Stats row */
+  .trust__stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+  }
+
+  @media (max-width: 720px) {
+    .trust__stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .trust__stat {
+    text-align: center;
+    padding: 1.25rem 1rem;
+  }
+
+  .trust__stat strong {
+    display: block;
+    font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--color-accent);
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+
+  .trust__stat span {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-dark-muted);
+    line-height: 1.4;
+  }
+
+  /* Integrations row */
+  .trust__integrations {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .trust__integrations h3 {
+    font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  .trust__int-row {
+    list-style: none;
+    margin: 0 auto 1.5rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .trust__int {
+    width: 76px;
+    height: 76px;
+    border-radius: 999px;
+    background: var(--tint, #fff);
+    /* Border matches the section bg so overlapping circles look "punched out" */
+    border: 4px solid var(--color-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+
+  .trust__int:not(:first-child) { margin-left: -22px; }
+
+  /* Stagger so leftmost is on top */
+  .trust__int:nth-child(1) { z-index: 6; }
+  .trust__int:nth-child(2) { z-index: 5; }
+  .trust__int:nth-child(3) { z-index: 4; }
+  .trust__int:nth-child(4) { z-index: 3; }
+  .trust__int:nth-child(5) { z-index: 2; }
+  .trust__int:nth-child(6) { z-index: 1; }
+
+  .trust__int:hover {
+    transform: translateY(-4px);
+    z-index: 10;
+  }
+
+  .trust__int img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+  }
+
+  .trust__int-more {
+    font-size: 0.9375rem;
+    color: var(--color-dark-muted);
+  }
+
+  .trust__int-more strong {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .trust__int { width: 60px; height: 60px; border-width: 3px; }
+    .trust__int:not(:first-child) { margin-left: -16px; }
+    .trust__int img { width: 32px; height: 32px; }
+  }
+
+  /* Final CTA + trust points */
+  .trust__cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .trust__cta-block .btn--accent {
+    padding-inline: 2rem;
+  }
+
+  .trust__cta-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-dark-muted);
+  }
+
+  .trust__cta-points li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .trust__cta-points svg {
+    color: var(--color-success);
+  }
+
+  /* ──────────── Billing cycle toggle ──────────── */
+  .billing-toggle {
+    display: inline-flex;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 4px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    width: fit-content;
+  }
+
+  .billing-toggle__btn {
+    background: none;
+    border: 0;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .billing-toggle__btn:hover { color: var(--color-fg); }
+
+  .billing-toggle__btn.is-active {
+    background: var(--color-fg);
+    color: #fff;
+  }
+
+  .billing-toggle__pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--color-success);
+    background: rgba(34, 197, 94, 0.15);
+    padding: 2px 6px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .billing-toggle__btn.is-active .billing-toggle__pill {
+    background: rgba(34, 197, 94, 0.25);
+    color: #4ade80;
+  }
+
+  /* ──────────── Recommendation finder ──────────── */
+  .finder {
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .finder .btn {
+    flex-shrink: 0;
+  }
+
+  .finder__head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 1.25rem;
+  }
+
+  .finder__head strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-fg);
+  }
+
+  .finder__head span {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .finder__sliders {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .finder__sliders { grid-template-columns: 1fr; gap: 1.1rem; }
+  }
+
+  .finder__slider {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .finder__slider-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .finder__slider-row > span {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+
+  .finder__slider-row > strong {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-fg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ──────────── Custom slider (finder only) ──────────── */
+  .slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      var(--color-accent) 0%,
+      var(--color-accent) var(--pct, 0%),
+      var(--color-border) var(--pct, 0%),
+      var(--color-border) 100%
+    );
+    outline: none;
+    cursor: pointer;
+  }
+
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: #fff;
+    border: 2px solid var(--color-accent);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+
+  .slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+
+  .slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: #fff;
+    border: 2px solid var(--color-accent);
+    cursor: pointer;
+  }
+
+  /* ──────────── Custom select ──────────── */
+  .select-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.6rem 2.2rem 0.6rem 0.85rem;
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-fg);
+    cursor: pointer;
+    width: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%235b6479" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 12px;
+    transition: border-color 0.15s ease;
+  }
+
+  .select-input:hover {
+    border-color: #d4d9e3;
+  }
+
+  .select-input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  /* ──────────── Tier cards ──────────── */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  @media (max-width: 1100px) {
+    .tier-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .tier-grid { grid-template-columns: 1fr; }
+  }
+
+  .tier {
+    background: #fff;
+    border: 1px solid rgba(234, 88, 12, 0.16);
+    border-radius: var(--radius-xl);
+    padding: clamp(2.25rem, 3vw, 2.75rem);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .tier.is-recommended {
+    border-color: var(--color-accent);
+    border-width: 2px;
+    transform: translateY(-4px);
+  }
+
+  .tier__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--color-accent);
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .tier.is-recommended .tier__badge {
+    opacity: 1;
+  }
+
+  .tier__name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Varying orange shades — light to deeper across the three cards */
+  .tier-grid .tier:nth-child(1) { background: #fff8f1; }
+  .tier-grid .tier:nth-child(2) { background: #ffeeda; }
+  .tier-grid .tier:nth-child(3) { background: #fce1c6; }
+
+  .tier__desc {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    min-height: 2.4em;
+  }
+
+  .tier__price {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .tier__price strong {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-fg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tier__period {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    font-weight: 500;
+  }
+
+  /* Per-card dropdown */
+  .tier__select-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tier__select-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+  }
+
+  .tier__cta {
+    margin-bottom: 1.25rem;
+    width: 100%;
+  }
+
+  .tier__features {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0 0;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .tier__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--color-fg);
+  }
+
+  .tier__features svg {
+    color: var(--color-success);
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ──────────── Compare plans table ──────────── */
+  .pricing-compare {
+    background: var(--color-surface);
+  }
+
+  /* No `overflow: hidden` — that creates a scroll container, and the sticky
+     head would then stick relative to the table (i.e. not stick at all to the
+     viewport). Round the head + last row corners individually instead. */
+  .compare-table {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+  }
+
+  /* Sticky plan header — stays below the nav as the table scrolls past */
+  .compare__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr));
+    position: sticky;
+    top: 72px;
+    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 16px 16px 0 0;
+    z-index: 5;
+  }
+
+  /* Round the bottom corners of the last row to match the table card */
+  .compare__group:last-child .compare__row:last-child {
+    border-radius: 0 0 16px 16px;
+    border-bottom: 0;
+  }
+
+  .compare__head-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1.25rem 1rem;
+    border-left: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .compare__head-cell--label {
+    align-items: flex-start;
+    text-align: left;
+    border-left: 0;
+  }
+
+  .compare__head-cell--label strong {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-fg);
+  }
+
+  .compare__head-cell--featured {
+    background: var(--color-surface);
+  }
+
+  .compare__plan-name {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-fg);
+  }
+
+  .compare__btn {
+    font-size: 0.75rem !important;
+    padding: 0.45rem 0.95rem !important;
+  }
+
+  /* Body */
+  .compare__category {
+    padding: 0.85rem 1.25rem;
+    background: var(--color-surface);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .compare__group:first-child .compare__category {
+    border-top: 0;
+  }
+
+  .compare__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr));
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.15s ease;
+  }
+
+  .compare__row:hover {
+    background: rgba(247, 248, 251, 0.6);
+  }
+
+  .compare__row:last-child {
+    border-bottom: 0;
+  }
+
+  .compare__cell {
+    padding: 0.95rem 1rem;
+    font-size: 0.875rem;
+    color: var(--color-fg);
+    text-align: center;
+    border-left: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .compare__cell--label {
+    border-left: 0;
+    text-align: left;
+    color: var(--color-fg);
+    font-weight: 500;
+    justify-content: flex-start;
+  }
+
+  .compare__cell--featured {
+    background: var(--color-surface);
+  }
+
+  .compare__check {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .compare__dash {
+    color: var(--color-subtle);
+    font-weight: 400;
+  }
+
+  .compare__value {
+    font-weight: 600;
+    color: var(--color-fg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* On smaller screens — hide the comparison table since it's too wide.
+     The tier cards above already provide feature-by-feature comparison. */
+  @media (max-width: 880px) {
+    .pricing-compare { display: none; }
+  }
+
+  /* ──────────── FAQ ──────────── */
+  .faq__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.1rem 1.5rem;
+  }
+
+  .faq-item summary {
+    font-weight: 700;
+    color: var(--color-fg);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-muted);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] summary::after { content: '−'; }
+
+  .faq-item p {
+    margin-top: 0.85rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+</style>
+

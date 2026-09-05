@@ -1,0 +1,781 @@
+---
+const icons: Record<string, string> = {
+  mic: '<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>',
+  sparkle: '<path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5 10.1 11.9 4.5 10l5.6-1.4L12 3z"/><path d="M19 16l.7 2.3L22 19l-2.3.7L19 22l-.7-2.3L16 19l2.3-.7L19 16z"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
+  chart: '<path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/>',
+  sync: '<path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M3 21v-5h5"/>',
+  bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/>',
+};
+
+// Static heights for the waveform bars (mimic an actual audio waveform)
+const barHeights = [10, 22, 14, 30, 16, 26, 12, 24, 18];
+---
+
+<section class="features section" id="features">
+  <div class="container">
+    <header class="section-header">
+      <span class="eyebrow">What we do</span>
+      <h2>Marketing, software, and automations — one engine for growth.</h2>
+      <p class="lead">
+        Built Outcomes connects your software, your information, and AI into
+        one system that brings in customers and removes busywork — measured
+        against a growth number we agree up front.
+      </p>
+    </header>
+
+    <!-- Top row — 3 large cards with preview + hover animations -->
+    <div class="features__grid features__grid--lg">
+
+      <!-- AI integration -->
+      <article class="feat-lg feat-lg--mic">
+        <div class="feat-lg__preview">
+          <span class="mic-rec" aria-hidden="true">
+            <span class="mic-rec-dot"></span>REC
+          </span>
+          <div class="mic-viz" aria-hidden="true">
+            <div class="mic-bars mic-bars--left">
+              {barHeights.slice(0, 4).map((h) => <span style={`--h: ${h}px`}></span>)}
+            </div>
+            <div class="mic-circle">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icons.mic} />
+            </div>
+            <div class="mic-bars mic-bars--right">
+              {barHeights.slice(4, 9).map((h) => <span style={`--h: ${h}px`}></span>)}
+            </div>
+          </div>
+        </div>
+        <div class="feat-lg__body">
+          <div class="feat-lg__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={icons.mic} />
+          </div>
+          <h3>Automations &amp; AI</h3>
+          <p>We automate the routine work in your business with AI — intake, follow-ups, invoicing, reporting — wired directly into the tools your team already uses.</p>
+        </div>
+      </article>
+
+      <!-- Measured outcomes -->
+      <article class="feat-lg feat-lg--score">
+        <div class="feat-lg__preview">
+          <div class="score-viz" aria-hidden="true">
+            <div class="score-ring">
+              <svg viewBox="0 0 100 100" class="score-ring-svg">
+                <circle class="score-ring-bg" cx="50" cy="50" r="42" stroke-width="6" fill="none"/>
+                <circle class="score-ring-fg" cx="50" cy="50" r="42" stroke-width="6" fill="none"
+                        stroke-dasharray="263.9" stroke-dashoffset="42"
+                        stroke-linecap="round" transform="rotate(-90 50 50)"/>
+              </svg>
+              <div class="score-ring-center">
+                <strong>B+</strong>
+                <span>8.4</span>
+              </div>
+            </div>
+            <div class="score-pills">
+              <span class="score-pill score-pill--a">A</span>
+              <span class="score-pill score-pill--d">D</span>
+              <span class="score-pill score-pill--b">B</span>
+            </div>
+          </div>
+        </div>
+        <div class="feat-lg__body">
+          <div class="feat-lg__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={icons.sparkle} />
+          </div>
+          <h3>Marketing that's measured</h3>
+          <p>Campaigns, funnels, and content built to bring you customers — and graded against real pipeline and revenue, not vanity metrics.</p>
+        </div>
+      </article>
+
+      <!-- Software integration -->
+      <article class="feat-lg feat-lg--sync">
+        <div class="feat-lg__preview">
+          <div class="sync-viz" aria-hidden="true">
+            <div class="sync-node">
+              <span class="sync-circle">
+                <img src="/logo.webp" alt="" loading="lazy" />
+              </span>
+              <span class="sync-label">Built Outcomes</span>
+            </div>
+
+            <div class="sync-bridge">
+              <svg class="sync-line" viewBox="0 0 100 6" preserveAspectRatio="none">
+                <line x1="0" y1="3" x2="100" y2="3" class="sync-line-dash"
+                      stroke="currentColor" stroke-width="2"
+                      stroke-dasharray="5 5" stroke-linecap="round" />
+                <line x1="0" y1="3" x2="100" y2="3" class="sync-line-solid"
+                      stroke="currentColor" stroke-width="2.4"
+                      stroke-linecap="round"
+                      pathLength="100"
+                      stroke-dasharray="100" stroke-dashoffset="100" />
+              </svg>
+              <span class="sync-check" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+
+            <div class="sync-node">
+              <span class="sync-circle">
+                <img src="/integrations/salesforce.webp" alt="" loading="lazy" />
+              </span>
+              <span class="sync-label">Salesforce</span>
+            </div>
+          </div>
+        </div>
+        <div class="feat-lg__body">
+          <div class="feat-lg__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={icons.sync} />
+          </div>
+          <h3>Software &amp; data integration</h3>
+          <p>Your CRM, billing, marketing, and support tools connected into one stack — information flows where it's needed, so decisions and automations run on live data.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom row — 4 mini cards (green accent, lighter animations) -->
+    <div class="mini-feats">
+
+      <!-- Outcome targets -->
+      <article class="mini-feat mini-feat--coach">
+        <div class="mini-feat__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+          </svg>
+          <span class="mini-pulse"></span>
+          <span class="mini-pulse mini-pulse--2"></span>
+        </div>
+        <h4>One target metric per engagement</h4>
+        <p>We agree the number that matters before any work starts — so success is defined by your business, not our invoice.</p>
+      </article>
+
+      <!-- Outcome dashboard -->
+      <article class="mini-feat mini-feat--chart">
+        <div class="mini-feat__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <rect class="mini-bar mini-bar--1" x="3" y="14" width="4" height="6" rx="1"/>
+            <rect class="mini-bar mini-bar--2" x="10" y="9" width="4" height="11" rx="1"/>
+            <rect class="mini-bar mini-bar--3" x="17" y="5" width="4" height="15" rx="1"/>
+          </svg>
+        </div>
+        <h4>Live outcome tracking</h4>
+        <p>Watch the agreed metric move as we build — one shared view, no spreadsheets, no surprises at review time.</p>
+      </article>
+
+      <!-- Discovery sprint -->
+      <article class="mini-feat mini-feat--search">
+        <div class="mini-feat__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m21 21-4.3-4.3"/>
+            <circle class="mini-search-dot" cx="11" cy="11" r="1.5" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+        <h4>Discovery before code</h4>
+        <p>A short discovery sprint maps your workflows and systems first — so we automate the right things, not just the easy ones.</p>
+      </article>
+
+      <!-- Progress updates -->
+      <article class="mini-feat mini-feat--bell">
+        <div class="mini-feat__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mini-bell-svg">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a2 2 0 0 0 3.4 0"/>
+          </svg>
+          <span class="mini-bell-badge">3</span>
+        </div>
+        <h4>Plain-English updates</h4>
+        <p>What shipped, what the metric did, and what's next — delivered in Slack or email, where your team already works.</p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .features {
+    background: #fff;
+  }
+
+  /* ──────────── Grids ──────────── */
+  .features__grid--lg {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .features__grid--sm {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 960px) {
+    .features__grid--lg,
+    .features__grid--sm { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .features__grid--lg,
+    .features__grid--sm { grid-template-columns: 1fr; }
+  }
+
+  /* ──────────── Large card shell ──────────── */
+  .feat-lg {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .feat-lg:hover {
+    border-color: #d4d9e3;
+    transform: translateY(-2px);
+  }
+
+  .feat-lg__preview {
+    background: var(--color-accent-soft);
+    height: 200px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feat-lg__body {
+    padding: 1.5rem 1.5rem 1.75rem;
+    background: #fff;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .feat-lg__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .feat-lg h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .feat-lg p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  /* ──────────── Mic preview ──────────── */
+  .mic-viz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .mic-bars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mic-bars span {
+    display: inline-block;
+    width: 3px;
+    height: var(--h, 12px);
+    background: var(--color-accent);
+    border-radius: 999px;
+    opacity: 0.55;
+    transition: opacity 0.2s ease;
+  }
+
+  .mic-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mic-rec {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--color-danger);
+    background: rgba(239, 68, 68, 0.12);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+
+  .mic-rec-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-danger);
+  }
+
+  /* On hover: bars pulse like a live waveform, REC dot blinks */
+  .feat-lg--mic:hover .mic-bars span {
+    opacity: 1;
+    animation: mic-pulse 0.85s ease-in-out infinite;
+  }
+
+  .feat-lg--mic:hover .mic-bars--left span:nth-child(1) { animation-delay: 0.00s; }
+  .feat-lg--mic:hover .mic-bars--left span:nth-child(2) { animation-delay: 0.12s; }
+  .feat-lg--mic:hover .mic-bars--left span:nth-child(3) { animation-delay: 0.06s; }
+  .feat-lg--mic:hover .mic-bars--left span:nth-child(4) { animation-delay: 0.18s; }
+  .feat-lg--mic:hover .mic-bars--right span:nth-child(1) { animation-delay: 0.04s; }
+  .feat-lg--mic:hover .mic-bars--right span:nth-child(2) { animation-delay: 0.16s; }
+  .feat-lg--mic:hover .mic-bars--right span:nth-child(3) { animation-delay: 0.10s; }
+  .feat-lg--mic:hover .mic-bars--right span:nth-child(4) { animation-delay: 0.20s; }
+  .feat-lg--mic:hover .mic-bars--right span:nth-child(5) { animation-delay: 0.08s; }
+
+  .feat-lg--mic:hover .mic-rec-dot {
+    animation: rec-blink 0.9s ease-in-out infinite;
+  }
+
+  @keyframes mic-pulse {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1.6); }
+  }
+
+  @keyframes rec-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* ──────────── Score preview ──────────── */
+  .score-viz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .score-ring {
+    position: relative;
+    width: 110px;
+    height: 110px;
+  }
+
+  .score-ring-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .score-ring-bg {
+    stroke: rgba(10, 26, 58, 0.08);
+  }
+
+  .score-ring-fg {
+    stroke: var(--color-success);
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .score-ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .score-ring-center strong {
+    font-size: 1.625rem;
+    font-weight: 800;
+    color: var(--color-fg);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .score-ring-center span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    margin-top: 2px;
+  }
+
+  .score-pills {
+    display: inline-flex;
+    gap: 6px;
+  }
+
+  .score-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.03em;
+  }
+
+  .score-pill--a { background: var(--color-success); }
+  .score-pill--b { background: var(--color-accent); }
+  .score-pill--d { background: var(--color-danger); }
+
+  /* On hover: ring redraws from empty to filled */
+  .feat-lg--score:hover .score-ring-fg {
+    animation: ring-fill 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes ring-fill {
+    from { stroke-dashoffset: 263.9; }
+    to { stroke-dashoffset: 42; }
+  }
+
+  /* ──────────── Sync preview ──────────── */
+  .sync-viz {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    gap: 0;
+  }
+
+  .sync-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .sync-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sync-circle img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .sync-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--color-fg);
+  }
+
+  .sync-bridge {
+    flex: 1;
+    max-width: 110px;
+    align-self: center;
+    margin-top: -0.85rem; /* center against the circles, not the labels */
+    position: relative;
+    height: 6px;
+    z-index: 1;
+  }
+
+  .sync-line {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Default: faded dashed gray line */
+  .sync-line-dash {
+    color: var(--color-subtle);
+    stroke: currentColor;
+    opacity: 0.6;
+    transition: opacity 0.35s ease;
+  }
+
+  /* Hover overlay: solid blue line that draws across */
+  .sync-line-solid {
+    color: var(--color-accent);
+    stroke: currentColor;
+    transition: stroke-dashoffset 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sync-check {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.6);
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    background: var(--color-success);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.25s ease 0.45s, transform 0.25s ease 0.45s;
+  }
+
+  /* Hover: dashed fades out, solid draws in, check pops up */
+  .feat-lg--sync:hover .sync-line-dash {
+    opacity: 0;
+  }
+
+  .feat-lg--sync:hover .sync-line-solid {
+    stroke-dashoffset: 0;
+  }
+
+  .feat-lg--sync:hover .sync-check {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Respect reduced motion — skip pulses, jumps, ring redraws */
+  @media (prefers-reduced-motion: reduce) {
+    .feat-lg--mic:hover .mic-bars span,
+    .feat-lg--mic:hover .mic-rec-dot,
+    .feat-lg--score:hover .score-ring-fg {
+      animation: none;
+    }
+    .sync-line path { stroke-dashoffset: 0; }
+    .sync-check { opacity: 1; transform: translate(-50%, -50%) scale(1); transition: none; }
+  }
+
+  /* ──────────── Small card (existing) ──────────── */
+  .feature {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .feature:hover {
+    transform: translateY(-2px);
+    border-color: #d4d9e3;
+  }
+
+  .feature__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+    margin-bottom: 1.1rem;
+  }
+
+  .feature h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature p {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  /* ──────────── Mini-feature cards (green accent) ──────────── */
+  .mini-feats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 1080px) {
+    .mini-feats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 540px) {
+    .mini-feats { grid-template-columns: 1fr; }
+  }
+
+  .mini-feat {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .mini-feat:hover {
+    border-color: rgba(34, 197, 94, 0.45);
+    transform: translateY(-2px);
+  }
+
+  .mini-feat__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(34, 197, 94, 0.13);
+    color: var(--color-success);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .mini-feat h4 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--color-fg);
+  }
+
+  .mini-feat p {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  /* ── Coach: pulse ring expanding from icon ── */
+  .mini-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    border: 2px solid var(--color-success);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mini-feat--coach:hover .mini-pulse {
+    animation: mini-ring 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .mini-feat--coach:hover .mini-pulse--2 {
+    animation-delay: 0.7s;
+  }
+
+  @keyframes mini-ring {
+    0%   { transform: scale(1);    opacity: 0.6; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+
+  /* ── Chart: bars grow from baseline, staggered ── */
+  .mini-bar {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+  }
+
+  .mini-feat--chart:hover .mini-bar--1 { animation: bar-grow 0.55s cubic-bezier(0.4, 0, 0.2, 1); }
+  .mini-feat--chart:hover .mini-bar--2 { animation: bar-grow 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.1s; }
+  .mini-feat--chart:hover .mini-bar--3 { animation: bar-grow 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
+
+  @keyframes bar-grow {
+    0%   { transform: scaleY(0.2); }
+    100% { transform: scaleY(1); }
+  }
+
+  /* ── Search: subtle scan motion + dot pulse ── */
+  .mini-feat--search:hover svg {
+    animation: scan 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: 11px 11px;
+  }
+
+  .mini-search-dot {
+    opacity: 0;
+  }
+
+  .mini-feat--search:hover .mini-search-dot {
+    animation: dot-blink 1.1s ease-in-out;
+  }
+
+  @keyframes scan {
+    0%, 100% { transform: rotate(0); }
+    35%      { transform: rotate(-12deg); }
+    70%      { transform: rotate(10deg); }
+  }
+
+  @keyframes dot-blink {
+    0%, 100% { opacity: 0; }
+    50%      { opacity: 1; }
+  }
+
+  /* ── Bell: ring + badge pop ── */
+  .mini-bell-svg {
+    transform-origin: top center;
+  }
+
+  .mini-feat--bell:hover .mini-bell-svg {
+    animation: bell-ring 0.85s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  }
+
+  @keyframes bell-ring {
+    0%, 100% { transform: rotate(0); }
+    15%      { transform: rotate(-12deg); }
+    30%      { transform: rotate(10deg); }
+    45%      { transform: rotate(-8deg); }
+    60%      { transform: rotate(6deg); }
+    75%      { transform: rotate(-3deg); }
+  }
+
+  .mini-bell-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--color-danger);
+    color: #fff;
+    font-size: 0.625rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+  }
+
+  .mini-feat--bell:hover .mini-bell-badge {
+    animation: badge-pop 0.4s ease-out 0.2s;
+  }
+
+  @keyframes badge-pop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.35); }
+    100% { transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mini-feat--coach:hover .mini-pulse,
+    .mini-feat--chart:hover .mini-bar,
+    .mini-feat--search:hover svg,
+    .mini-feat--search:hover .mini-search-dot,
+    .mini-feat--bell:hover .mini-bell-svg,
+    .mini-feat--bell:hover .mini-bell-badge {
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,235 @@
+---
+const faqs = [
+  // Left column (1-5)
+  {
+    q: 'Who do you work with?',
+    a: "Mostly small and mid-market businesses running on off-the-shelf tools — CRMs, billing platforms, support desks, spreadsheets. If your systems don't talk to each other or your team is drowning in routine work, that's exactly the kind of problem we take on.",
+  },
+  {
+    q: 'How long does an engagement take?',
+    a: 'Discovery runs one to two weeks. The first working increment usually ships four to six weeks in, and a full engagement typically wraps in two to three months. You see something real early — never a long silence followed by a big reveal.',
+  },
+  {
+    q: 'Do we have to replace our existing software?',
+    a: "No — that's the point. We integrate rather than replace. The tools your team already knows stay in place; we wire them together and add software and AI where the gaps are. Rip-and-replace projects are how budgets and momentum die.",
+  },
+  {
+    q: 'How do you price your work?',
+    a: "Discovery is fixed-price, so there's zero risk in finding out what's possible. After that, you get a proposal tied to the outcome we agreed — not open-ended hourly billing. You'll always know what a result costs before you commit to it.",
+  },
+  {
+    q: 'Who owns what you build?',
+    a: 'You do — all of it. Code, integrations, automations, dashboards, documentation. There\'s no lock-in and nothing rented back to you. We hand over docs and training, with an optional support plan if you want us on call.',
+  },
+  // Right column (6-10)
+  {
+    q: 'What does "measured outcomes" actually mean?',
+    a: 'Before any build starts, we agree a target metric together — revenue, hours saved, response time, or conversion. That number goes on a shared dashboard, we track it through the engagement, and the final report says plainly whether we hit it.',
+  },
+  {
+    q: 'What kinds of things do you automate and integrate?',
+    a: 'AI takes over routine workflows — intake, triage, data entry, follow-ups, document handling — inside the tools you already use. On the integration side, we connect CRM, billing, ops, and support systems so data entered once shows up everywhere.',
+  },
+  {
+    q: 'Do we need technical people on our side?',
+    a: "No. We need someone who knows how your business actually works day to day — that's it. We explain everything in plain English, and the training we hand over is written for your team, not for engineers.",
+  },
+  {
+    q: 'What happens when the engagement ends?',
+    a: 'You get a clear handover: a report on what changed and by how much, full documentation, and training for your team. Many clients add an optional support plan afterwards, but everything is built so you can run it without us.',
+  },
+  {
+    q: 'How do we get started?',
+    a: "Book a call, or email micah@talkcraftai.com. We'll talk through where the friction is, and if it looks like a fit, kick off a short fixed-price discovery sprint — no long contract, no commitment beyond that.",
+  },
+];
+
+const left = faqs.slice(0, 5);
+const right = faqs.slice(5, 10);
+---
+
+<section class="faq section" id="faq">
+  <div class="container">
+    <header class="section-header">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions, straight answers.</h2>
+      <p class="lead">Still curious? <a href="mailto:micah@talkcraftai.com" class="faq__contact">Drop us a note</a> at micah@talkcraftai.com and we'll get back within a business day.</p>
+    </header>
+
+    <div class="faq__list">
+      <div class="faq__column">
+        {left.map((f) => (
+          <div class="faq-item" data-faq>
+            <button type="button" class="faq-item__head" data-toggle aria-expanded="false">
+              <span>{f.q}</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-item__content">
+              <div class="faq-item__inner">
+                <p>{f.a}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="faq__column">
+        {right.map((f) => (
+          <div class="faq-item" data-faq>
+            <button type="button" class="faq-item__head" data-toggle aria-expanded="false">
+              <span>{f.q}</span>
+              <span class="faq-item__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="faq-item__content">
+              <div class="faq-item__inner">
+                <p>{f.a}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--color-surface);
+  }
+
+  .faq__contact {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .faq__contact:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* ──────────── Two-column layout (independent columns) ──────────── */
+  .faq__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  @media (max-width: 720px) {
+    .faq__list { grid-template-columns: 1fr; }
+  }
+
+  .faq__column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* ──────────── Item card ──────────── */
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-item.is-open {
+    border-color: #d4d9e3;
+  }
+
+  .faq-item__head {
+    width: 100%;
+    background: none;
+    border: 0;
+    padding: 1.1rem 1.4rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--color-fg);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .faq-item__head > span:first-child {
+    line-height: 1.4;
+  }
+
+  .faq-item__icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: var(--color-surface);
+    color: var(--color-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .faq-item.is-open .faq-item__icon {
+    transform: rotate(135deg);
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  /* ──────────── Animated content ──────────── */
+  /* Grid-row trick: animate from 0fr → 1fr for smooth height transition */
+  .faq-item__content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-item.is-open .faq-item__content {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-item__inner {
+    overflow: hidden;
+    min-height: 0;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-item.is-open .faq-item__inner {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .faq-item__inner p {
+    padding: 0 1.4rem 1.2rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item__content,
+    .faq-item__inner,
+    .faq-item__icon { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-faq]').forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('[data-toggle]');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const open = item.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>

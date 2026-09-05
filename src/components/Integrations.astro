@@ -1,0 +1,152 @@
+---
+const integrations = [
+  { name: 'Google Meet', file: 'google-meet.webp', tint: '#dcf2e3' },
+  { name: 'Zoom', file: 'zoom.webp', tint: '#dbeaff' },
+  { name: 'Microsoft Teams', file: 'teams.webp', tint: '#e3deff' },
+  { name: 'Slack', file: 'slack.webp', tint: '#fff2d4' },
+  { name: 'Salesforce', file: 'salesforce.webp', tint: '#d8ecf8' },
+  { name: 'Gmail', file: 'gmail.webp', tint: '#ffe0db' },
+];
+---
+
+<section class="integrations section" id="integrations">
+  <div class="container">
+    <header class="section-header">
+      <span class="eyebrow">Integrations</span>
+      <h2>We integrate with the tools you already run.</h2>
+      <p class="lead">
+        Slack, your CRM, calendars, billing, support desks — we wire new
+        software and AI into your existing stack instead of asking you to
+        replace it.
+      </p>
+      <a href="#" class="btn btn--ghost btn--lg integrations__cta">See how we integrate</a>
+    </header>
+
+    <ul class="integrations__row">
+      {integrations.map((i) => (
+        <li class="integration" style={`--tint:${i.tint}`}>
+          <span class="integration__bubble" title={i.name}>
+            <img src={`/integrations/${i.file}`} alt={i.name} loading="lazy" />
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="integrations__more">
+      and <strong>120+ more tools</strong> we can connect
+    </p>
+  </div>
+</section>
+
+<style>
+  .integrations {
+    background: #eef4fc;
+    /* Tighter vertical rhythm than the default --section-pad */
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  /* Pull the section-header tighter so the button sits closer to the logos */
+  .integrations .section-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .integrations__cta {
+    margin-top: 0.5rem;
+    /* Darker outline so the button reads on the light blue section bg */
+    border-color: var(--color-fg);
+    color: var(--color-fg);
+  }
+
+  .integrations__cta:hover {
+    background: var(--color-fg);
+    color: #fff;
+    border-color: var(--color-fg);
+  }
+
+  .integrations__row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .integration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Stagger overlap so leftmost sits on top, like an avatar stack */
+  .integration:not(:first-child) {
+    margin-left: -28px;
+  }
+
+  .integration:nth-child(1) { z-index: 6; }
+  .integration:nth-child(2) { z-index: 5; }
+  .integration:nth-child(3) { z-index: 4; }
+  .integration:nth-child(4) { z-index: 3; }
+  .integration:nth-child(5) { z-index: 2; }
+  .integration:nth-child(6) { z-index: 1; }
+
+  /* Pop hovered bubble above its neighbors */
+  .integration:hover {
+    z-index: 10;
+  }
+
+  .integration__bubble {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--tint);
+    border: 4px solid #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+
+  .integration:hover .integration__bubble {
+    transform: translateY(-4px);
+  }
+
+  .integration__bubble img {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+  }
+
+  .integrations__more {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+  }
+
+  .integrations__more strong {
+    color: var(--color-fg);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 2px;
+  }
+
+  @media (max-width: 520px) {
+    .integration:not(:first-child) {
+      margin-left: -22px;
+    }
+    .integration__bubble {
+      width: 68px;
+      height: 68px;
+      border-width: 3px;
+    }
+    .integration__bubble img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+</style>

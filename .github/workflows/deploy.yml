@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      # The site is written with root-absolute links (href="/pricing" etc.)
+      # so it can move to a custom domain untouched. GitHub Pages serves it
+      # from /builtoutcome/, so prefix those paths in the built output only.
+      - name: Prefix root-absolute paths for the Pages subpath
+        run: |
+          find dist -name '*.html' -exec sed -i \
+            -e 's|href="/|href="/builtoutcome/|g' \
+            -e 's|src="/|src="/builtoutcome/|g' \
+            -e 's|href="/builtoutcome//|href="//|g' \
+            -e 's|src="/builtoutcome//|src="//|g' \
+            {} +
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

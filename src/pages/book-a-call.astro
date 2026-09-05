@@ -6,8 +6,15 @@ import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout
-  title="Book a call — Built Outcomes"
-  description="Book a free strategy call with Built Outcomes — pick a time that suits you and tell us what you want to grow, automate, or connect."
+  title="Book a Free Strategy Call | Built Outcomes"
+  description="Book a free 30-minute strategy call with Built Outcomes. No prep, no obligation — leave with an honest take on where software and AI will pay off first."
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Book a call with Built Outcomes',
+    url: `${Astro.site?.toString().replace(/\/$/, '') ?? ''}/book-a-call`,
+    mainEntity: { '@id': `${Astro.site?.toString().replace(/\/$/, '') ?? ''}/#organization` },
+  }}
 >
   <Nav />
   <main>

@@ -1,6 +1,6 @@
-# Close Report — SEO Playbook
+# Built Outcomes — SEO Playbook
 
-This document is the living SEO playbook for the Close Report marketing site.
+This document is the living SEO playbook for the Built Outcomes marketing site.
 Every page, post, or refactor should be checked against it. Update it whenever
 you learn something new about how the site ranks, what queries convert, or what
 search engines are doing.
@@ -36,7 +36,7 @@ Before merging any new page, confirm **all** of these:
       `alt=""`.
 - [ ] **Internal links** — at least 2–3 contextual links to related pages with
       meaningful anchor text (not "click here").
-- [ ] **OG image** — 1200×630 PNG/JPG at `public/og-default.png` (or page-specific).
+- [ ] **OG image** — 1200×630 PNG/JPG at `public/og-default.png` — ✅ exists (or page-specific).
 - [ ] **Schema.org JSON-LD** — `Organization` on the home page; `Article` /
       `Product` / `FAQPage` on relevant pages.
 - [ ] **Mobile check** — viewport meta is in `<SEO />`; verify layout at 375 px.
@@ -65,7 +65,7 @@ Before merging any new page, confirm **all** of these:
   be linked from ≥ 1 existing page within a week of publishing.
 - **Author + reviewer** bylines on long-form content build E-E-A-T.
 
-## 5. Local + business SEO (if Close Report serves a geography)
+## 5. Local + business SEO (if Built Outcomes serves a geography)
 
 - [ ] Create / claim Google Business Profile.
 - [ ] NAP (Name, Address, Phone) consistent everywhere it appears.
@@ -96,5 +96,5 @@ Before merging any new page, confirm **all** of these:
 
 ---
 
-_Last updated: 2026-05-05. Keep this file honest — if a rule here doesn't
+_Last updated: 2026-09-05. Keep this file honest — if a rule here doesn't
 match what we're actually doing, fix one of them._

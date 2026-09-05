@@ -6,8 +6,15 @@ import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout
-  title="Contact — Built Outcomes"
-  description="Get in touch with Built Outcomes — email micah@talkcraftai.com and we'll get back to you within one business day."
+  title="Contact Us — Software, AI & Marketing Help | Built Outcomes"
+  description="Questions about marketing, automation, or AI for your business? Email micah@talkcraftai.com — we reply within one business day. Get in touch today."
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Built Outcomes',
+    url: `${Astro.site?.toString().replace(/\/$/, '') ?? ''}/contact`,
+    mainEntity: { '@id': `${Astro.site?.toString().replace(/\/$/, '') ?? ''}/#organization` },
+  }}
 >
   <Nav />
   <main>

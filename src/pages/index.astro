@@ -10,11 +10,40 @@ import HowItWorks from '../components/HowItWorks.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
+
+const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['Organization', 'ProfessionalService'],
+    '@id': `${site}/#organization`,
+    name: 'Built Outcomes',
+    url: `${site}/`,
+    logo: `${site}/logo.webp`,
+    image: `${site}/og-default.png`,
+    email: 'micah@talkcraftai.com',
+    description:
+      'Built Outcomes integrates marketing, software, automations, and AI into businesses — with every engagement measured against an agreed growth target.',
+    foundingDate: '2021',
+    slogan: 'Marketing, software & AI — measured by outcomes.',
+    knowsAbout: ['Marketing', 'Business automation', 'AI integration', 'Software integration'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site}/#website`,
+    name: 'Built Outcomes',
+    url: `${site}/`,
+    publisher: { '@id': `${site}/#organization` },
+  },
+];
 ---
 
 <Layout
-  title="Built Outcomes — Marketing, software & AI to grow your business"
-  description="Built Outcomes helps businesses grow through marketing, software, and automations — integrating your tools, your information, and AI into one connected engine, with every engagement measured against an agreed growth target."
+  title="Marketing, Software & AI for Business Growth | Built Outcomes"
+  description="We integrate marketing, software, automations, and AI into your business, measured against an agreed growth target. Book a free strategy call today."
+  schema={schema}
 >
   <Nav />
   <main>

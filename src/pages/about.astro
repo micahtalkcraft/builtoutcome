@@ -22,8 +22,15 @@ const values = [
 ---
 
 <Layout
-  title="About — Built Outcomes"
-  description="Why we started Built Outcomes — a consultancy that integrates software and AI into businesses to deliver measurable results."
+  title="About Us — An Outcome-First Consultancy | Built Outcomes"
+  description="Meet Built Outcomes — engineers and strategists who integrate software and AI into businesses and stay accountable to the result. See how we work."
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About Built Outcomes',
+    url: `${Astro.site?.toString().replace(/\/$/, '') ?? ''}/about`,
+    mainEntity: { '@id': `${Astro.site?.toString().replace(/\/$/, '') ?? ''}/#organization` },
+  }}
 >
   <Nav />
   <main>

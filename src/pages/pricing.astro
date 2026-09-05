@@ -71,11 +71,42 @@ const faqs = [
     a: 'Optional and quoted just like the rest. If you want us to keep monitoring and improving what we built, we agree a simple monthly arrangement you can cancel anytime — and everything keeps working either way.',
   },
 ];
+
+const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: 'Built Outcomes services',
+    url: `${site}/pricing`,
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.name,
+        description: s.desc,
+        provider: { '@id': `${site}/#organization` },
+      },
+      priceSpecification: { '@type': 'PriceSpecification', description: 'Fixed quote, scoped per engagement' },
+    })),
+  },
+];
 ---
 
 <Layout
-  title="Pricing — Built Outcomes"
-  description="Marketing, automation, and business growth engagements — each scoped to your business with a fixed quote tied to an agreed outcome. No open-ended hourly billing."
+  title="Pricing — Fixed Quotes, No Hourly Billing | Built Outcomes"
+  description="Every engagement gets a fixed quote tied to an agreed outcome — marketing, automation, or the full growth engine. No hourly billing. Get a free quote today."
+  schema={schema}
 >
   <Nav />
   <main>

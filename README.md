@@ -25,5 +25,5 @@ workflow in `.github/workflows/deploy.yml` on every push to `main`.
 
 ## Notes
 
-- Live at https://builtoutcomes.com (GitHub Pages custom domain — `public/CNAME`
+- Live at https://www.builtoutcomes.com (GitHub Pages custom domain — `public/CNAME`
   plus `SITE_URL` in `astro.config.mjs`).

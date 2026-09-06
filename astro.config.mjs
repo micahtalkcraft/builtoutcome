@@ -5,7 +5,7 @@ import robotsTxt from 'astro-robots-txt';
 
 // Production domain — drives absolute URLs in sitemap, robots.txt,
 // canonical tags, and Open Graph metadata.
-const SITE_URL = 'https://builtoutcomes.com';
+const SITE_URL = 'https://www.builtoutcomes.com';
 
 // https://astro.build/config
 export default defineConfig({
